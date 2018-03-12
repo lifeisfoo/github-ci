@@ -1,20 +1,29 @@
 const express = require('express');
-const app = express();
 const bodyParser = require('body-parser');
-
+const fse = require('fs-extra');
 const github = require('octonode');
+const commands = require('./lib/commands');
 
-const client = github.client(process.env.GITHUB_ACCESS_TOKEN);
+const GITHUB_ACCESS_TOKEN = process.env.GITHUB_ACCESS_TOKEN;
+const DOCKER_USER = process.env.DOCKER_USER;
+const DOCKER_PASS = process.env.DOCKER_PASS;
+const BUILDS_DIR = process.env.BUILDS_DIR || './builds';
 
-const fs = require('fs');
-fs.mkdirSync(process.env.BUILDS_DIR || './builds')
+console.log('Using', BUILDS_DIR, 'as builds dir');
 
+fse.ensureDir(BUILDS_DIR)
+    .then(() => {
+        console.log('success!')
+    })
+    .catch(err => {
+        console.error(err)
+    });
+
+const client = github.client(GITHUB_ACCESS_TOKEN);
 const ghrepo = client.repo('lifeisfoo/test-ci');
 const ghpr = client.pr('lifeisfoo/test-ci', 1);
 
-const commands = require('./lib/commands');
-
-
+const app = express();
 app.use(bodyParser.json());
 
 app.post('/events-handler', (req, res) => {
@@ -67,8 +76,8 @@ app.post('/events-handler', (req, res) => {
             };
             const docker_conf = {
                 registry: 'index.docker.io',
-                user: process.env.DOCKER_USER,
-                pass: process.env.DOCKER_PASS,
+                user: DOCKER_USER,
+                pass: DOCKER_PASS,
                 image_name: main_repo_full_name, // by convention
                 image_tag: `PR-${pr_number}`
             };
