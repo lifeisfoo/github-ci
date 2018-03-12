@@ -5,9 +5,13 @@ const github = require('octonode');
 const commands = require('./lib/commands');
 
 const GITHUB_ACCESS_TOKEN = process.env.GITHUB_ACCESS_TOKEN;
+
 const DOCKER_USER = process.env.DOCKER_USER;
 const DOCKER_PASS = process.env.DOCKER_PASS;
+const DOCKER_REGISTRY = process.env.DOCKER_REGISTRY || 'registry.hub.docker.com';
+
 const BUILDS_DIR = process.env.BUILDS_DIR || './builds';
+
 
 console.log('Using', BUILDS_DIR, 'as builds dir');
 
@@ -75,7 +79,7 @@ app.post('/events-handler', (req, res) => {
                 commit_sha: last_commit_sha
             };
             const docker_conf = {
-                registry: 'index.docker.io',
+                registry: DOCKER_REGISTRY,
                 user: DOCKER_USER,
                 pass: DOCKER_PASS,
                 image_name: main_repo_full_name, // by convention
