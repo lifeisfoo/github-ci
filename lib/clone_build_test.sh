@@ -1,7 +1,7 @@
-git clone -b $BRANCH_NAME \
+git clone -b $BRANCH \
     --single-branch \
-    https://$GITHUB_ACCESS_TOKEN@github.com/$REPO_FULL_NAME.git $OUT_DIR && \
-    cd $OUT_DIR && \
+    https://$GITHUB_ACCESS_TOKEN@github.com/$REPO.git $BUILD_DIR && \
+    cd $BUILD_DIR && \
     git checkout $COMMIT && \
     docker login --username $DOCKER_USER --password $DOCKER_PASS $DOCKER_REGISTRY&& \
     docker build -t $DOCKER_REGISTRY/$IMAGE_NAME:$IMAGE_TAG . && \
