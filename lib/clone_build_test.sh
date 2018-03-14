@@ -10,9 +10,5 @@ git clone -b $BRANCH \
         --force-recreate \
         --abort-on-container-exit \
         --exit-code-from sut && \
-    docker push $DOCKER_REGISTRY/$IMAGE_NAME:$IMAGE_TAG
-
-
-    # TODO save docker auth data in $HOME/.docker/config.json
-    # OR cat ~/my_password.txt | docker login --username foo --password-stdin
-    # see https://docs.docker.com/engine/reference/commandline/login/#extended-description
+    docker push $DOCKER_REGISTRY/$IMAGE_NAME:$IMAGE_TAG && \
+    if [ "$IMAGE_TAG" = "master" ]; then docker push $DOCKER_REGISTRY/$IMAGE_NAME:latest; fi
