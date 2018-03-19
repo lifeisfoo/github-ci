@@ -4,7 +4,7 @@ git clone -b $BRANCH \
     cd $BUILD_DIR && \
     git checkout $COMMIT && \
     docker login --username $DOCKER_USER --password $DOCKER_PASS $DOCKER_REGISTRY&& \
-    docker build -t $DOCKER_REGISTRY/$IMAGE_NAME:$IMAGE_TAG . && \
+    docker build $DOCKER_BUILD_ARGS -t $DOCKER_REGISTRY/$IMAGE_NAME:$IMAGE_TAG . && \
     docker-compose -f docker-compose.test.yml \
         up --build \
         --force-recreate \
