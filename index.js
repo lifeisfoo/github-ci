@@ -3,9 +3,12 @@ const bodyParser = require('body-parser');
 
 require('dotenv').config();
 
+const DEFAULT_GITHUB_ORG = process.env.DEFAULT_GITHUB_ORG || '';
+
 const ACTIVE_REPOS = process.env.ACTIVE_REPOS.split(',');
 const SUPPORTED_EVENTS = ['pull_request', 'push', 'status', 'create'];
 
+console.log('Default Github organization is', DEFAULT_GITHUB_ORG);
 console.log('Active repositories are', JSON.stringify(ACTIVE_REPOS));
 console.log('Supported events are', JSON.stringify(SUPPORTED_EVENTS));
 
@@ -29,12 +32,19 @@ function check_supported_events(req, res, next) {
 
 function check_repository_active(req, res, next) {
     const repo_full_name = req.body.repository.full_name;
+    const repo_name = req.body.repository.name;
+    const alternative_repo_full_name = `${DEFAULT_GITHUB_ORG}/${repo_name}`;
+
     if (ACTIVE_REPOS.indexOf(repo_full_name) !== -1) {
         console.log(repo_full_name, 'is active');
         req.repo_full_name = repo_full_name;
         next();
+    } else if (ACTIVE_REPOS.indexOf(alternative_repo_name) !== -1) {
+        console.log(alternative_repo_full_name, 'is active (alternative)');
+        req.repo_full_name = alternative_repo_full_name;
+        next();
     } else {
-        console.log(repo_full_name, 'is not active, skip');
+        console.log(repo_full_name, 'or', alternative_repo_full_name, 'is not active, skip');
         return res.status(200).end();
     }
 }
