@@ -32,6 +32,7 @@ function check_supported_events(req, res, next) {
 
 function check_repository_active(req, res, next) {
     const repo_full_name = req.body.repository.full_name;
+    
     const repo_name = req.body.repository.name;
     const alternative_repo_full_name = `${DEFAULT_GITHUB_ORG}/${repo_name}`;
 
@@ -39,7 +40,7 @@ function check_repository_active(req, res, next) {
         console.log(repo_full_name, 'is active');
         req.repo_full_name = repo_full_name;
         next();
-    } else if (ACTIVE_REPOS.indexOf(alternative_repo_full_name) !== -1) {
+    } else if (ACTIVE_REPOS.indexOf(repo_name) !== -1) {
         console.log(alternative_repo_full_name, 'is active (alternative)');
         req.repo_full_name = alternative_repo_full_name;
         next();
