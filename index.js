@@ -39,7 +39,7 @@ function check_repository_active(req, res, next) {
         console.log(repo_full_name, 'is active');
         req.repo_full_name = repo_full_name;
         next();
-    } else if (ACTIVE_REPOS.indexOf(alternative_repo_name) !== -1) {
+    } else if (ACTIVE_REPOS.indexOf(alternative_repo_full_name) !== -1) {
         console.log(alternative_repo_full_name, 'is active (alternative)');
         req.repo_full_name = alternative_repo_full_name;
         next();
