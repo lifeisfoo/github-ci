@@ -3,7 +3,9 @@
 
 ubuntu 16.04:
 
+```
 apt-get install redis-server
+apt-get install aha
 systemctl status redis
 curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 apt-get install nodejs
@@ -16,14 +18,17 @@ pm2 start index.js
 ufw allow 3000
 pm2 logs
 pm2 reload all #dopo update
+```
 
 install docker
 https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-using-the-repository
 
 install compose
 https://docs.docker.com/compose/install/#prerequisites
-sudo curl -L https://github.com/docker/compose/releases/download/1.19.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
 
+```
+sudo curl -L https://github.com/docker/compose/releases/download/1.19.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+```
 
 https://help.github.com/articles/about-github-s-ip-addresses/
 https://api.github.com/meta
