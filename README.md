@@ -33,6 +33,29 @@ sudo curl -L https://github.com/docker/compose/releases/download/1.19.0/docker-c
 https://help.github.com/articles/about-github-s-ip-addresses/
 https://api.github.com/meta
 
+## NGINX conf
+
+```
+server {
+        listen 80 default_server;
+        listen [::]:80 default_server;
+
+        root /var/www/builds-logs;
+        index index.html index.htm index.nginx-debian.html;
+
+        server_name _;
+
+        location / {
+          autoindex off;
+
+          # http://nginx.org/en/docs/http/ngx_http_core_module.html#types          
+          ## REQUIRED to force mimetype, only if logfiles extension is unknow (eg. .log)
+          #types { }
+          #default_type text/plain;
+        }
+}
+```
+
 ## TODO
 
  - [ ] WIP checkout the PR code using a queue and listen for response
