@@ -48,6 +48,9 @@ server {
         location / {
           autoindex off;
 
+          # automatically serve html version (with colors) if available
+          try_files $uri.html $uri =404;
+
           # http://nginx.org/en/docs/http/ngx_http_core_module.html#types          
           ## REQUIRED to force mimetype, only if logfiles extension is unknow (eg. .log)
           #types { }
