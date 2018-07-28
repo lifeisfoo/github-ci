@@ -1,83 +1,43 @@
+# github-ci
 
-## Manual install
+`github-ci` is an opinionated continuous integration app (CI) for Github organizations. 
 
-ubuntu 16.04:
+It tries to follow the [KISS principle](https://en.wikipedia.org/wiki/KISS_principle) and the [convention over configuration](https://en.wikipedia.org/wiki/Convention_over_configuration) paradigm.
 
-```
-apt-get install redis-server
-systemctl status redis
-redis-cli config set stop-writes-on-bgsave-error no
-curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-apt-get install aha
-apt-get install nodejs
-git clone https://github.com/lifeisfoo/github-ci.git
-cd gituhub-ci
-npm install
-npm install pm2 -g
-vim .env
-pm2 start index.js
-ufw allow 3000
-pm2 logs
-pm2 reload all #dopo update
-```
+It's a self hosted application to build, test and publish your projects using Dockerfiles and docker-compose files.
 
-install docker
-https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-using-the-repository
+It's main purpose is to publish Docker images to a registry, but it can be used to build and publish anything you want. 
 
-install compose
-https://docs.docker.com/compose/install/#prerequisites
+## Installation
 
-```
-sudo curl -L https://github.com/docker/compose/releases/download/1.19.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
-```
+> Tested with ubuntu 16.04 && 18.04
 
-https://help.github.com/articles/about-github-s-ip-addresses/
-https://api.github.com/meta
+    curl -o- https://raw.githubusercontent.com/lifeisfoo/github-ci/master/install.sh
 
-## NGINX conf
+### Post installation
 
-```
-server {
-        listen 80 default_server;
-        listen [::]:80 default_server;
+- **REQUIRED** create a Github personal access token
+- **REQUIRED** add a configuration file `.env` inside the app dir, see `examples/example.env`
+- **REQUIRED** setup NGINX to serve build logs, see `examples/logs-web-server-nginx.conf`
+- **REQUIRED** run the app using `pm2 start index.js`
+- **RECCOMENDED** add a Digital Ocean Firewall to allow webhook requests only from [Github IPs](https://help.github.com/articles/about-github-s-ip-addresses/)
+- start making p
 
-        root /var/www/builds-logs;
-        index index.html index.htm index.nginx-debian.html;
-
-        server_name _;
-
-        location / {
-          autoindex off;
-
-          # automatically serve html version (with colors) if available
-          try_files $uri.html $uri =404;
-
-          # http://nginx.org/en/docs/http/ngx_http_core_module.html#types          
-          ## REQUIRED to force mimetype, only if logfiles extension is unknow (eg. .log)
-          #types { }
-          #default_type text/plain;
-        }
-}
-```
 
 ## TODO
 
- - [ ] WIP checkout the PR code using a queue and listen for response
-
-        // TODO: the build job will checkout
-        // and execute docker on a remote host/VM to build
-        // code is given from here (no github credential passing)
-
-// State be one of error, failure, pending, or success:
-//    marked has failed because the job failed to complete
-//    marked as error because the job did complete, but exited with a non-zero status
-//    marked as success because the job did complete, and exited with a zero status
+- [ ] Explain scope of the project and its limits
+- [ ] Better installation documentation
+- [ ] Explain conventions
+- [ ] Explain how to use pm2 for logs and restart
+- [ ] Add a complete example of a project
+- [ ] Add a non-Docker project example (e.g. a npm library)
 
 ## Internals
 
-### Job queue
+### Jobs queue
 
-The job queue is provided by Bull using Redis. A job object in the queue has this structure:
+The jobs queue is provided by [Bull](https://github.com/OptimalBits/bull) using [Redis](https://redis.io/). A job object in the queue has the following structure:
 
 ```
 {
@@ -86,7 +46,7 @@ The job queue is provided by Bull using Redis. A job object in the queue has thi
   "data": {
     "github": {
       "access_token": "562e77axxx",
-      "full_repo_name": "Variazioni/test-ci",
+      "full_repo_name": "another-user/test-ci",
       "branch_name": "fix-from-FORK",
       "commit_sha": "690c7c9f792915a84692be2c58e146adddf14b4b",
       "main_repo_full_name": "lifeisfoo/test-ci"
@@ -98,7 +58,7 @@ The job queue is provided by Bull using Redis. A job object in the queue has thi
       "image_name": "lifeisfoo/test-ci",
       "image_tag": "PR-2"
     },
-    "out_dir": "/Users/alessandro/Dev/github-ci/builds/lifeisfoo/test-ci/PR-2-Variazioni_test-ci:fix-from-FORK:690c7c9f792915a84692be2c58e146adddf14b4b"
+    "out_dir": "/Users/alessandro/Dev/github-ci/builds/lifeisfoo/test-ci/PR-2-another-user_test-ci:fix-from-FORK:690c7c9f792915a84692be2c58e146adddf14b4b"
   }
 }
 ```
@@ -128,3 +88,21 @@ look for a `bull:builds:ID:lock` key
 then
 
     DEL bull:builds:904:lock
+
+---
+
+## Contributing
+
+You can open issues for bugs you've found or features you think are missing. You can also submit pull requests to this repository.
+
+## License
+
+Copyright (C) 2018 Alessandro Miliucci & other github-ci contributors (see AUTHORS.md)
+
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License along with this program. If not, see <https://www.gnu.org/licenses/>.
+
+---
