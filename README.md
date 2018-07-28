@@ -5,12 +5,10 @@ ubuntu 16.04:
 
 ```
 apt-get install redis-server
-apt-get install aha
 systemctl status redis
-redis-cli
-config set stop-writes-on-bgsave-error no
-exit
+redis-cli config set stop-writes-on-bgsave-error no
 curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+apt-get install aha
 apt-get install nodejs
 git clone https://github.com/lifeisfoo/github-ci.git
 cd gituhub-ci
