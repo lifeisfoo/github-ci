@@ -1,4 +1,5 @@
-docker-compose -f docker-compose.test.yml \
+cd $BUILD_DIR && \
+    docker-compose -f docker-compose.test.yml \
     up --build \
     --force-recreate \
     --renew-anon-volumes \
