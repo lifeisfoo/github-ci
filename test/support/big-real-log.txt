@@ -1,0 +1,1749 @@
+Build started at Thu Aug 02 2018 13:26:24 GMT+0000 (UTC)!
+Cloning into '/root/builds/1533216384370-56972f27dd88ab1eb9ebc2d6d9c9ecf998617cb0'...
+Note: checking out '56972f27dd88ab1eb9ebc2d6d9c9ecf998617cb0'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by performing another checkout.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -b with the checkout command again. Example:
+
+  git checkout -b <new-branch-name>
+
+HEAD is now at 56972f2... Forcing CI
+WARNING! Using --password via the CLI is insecure. Use --password-stdin.
+Login Succeeded
+Sending build context to Docker daemon    639kB
+
+Step 1/9 : FROM node:8.11.2-alpine
+8.11.2-alpine: Pulling from library/node
+605ce1bd3f31: Pulling fs layer
+87c562fdbd94: Pulling fs layer
+faa3fed7500b: Pulling fs layer
+605ce1bd3f31: Verifying Checksum
+605ce1bd3f31: Download complete
+faa3fed7500b: Verifying Checksum
+faa3fed7500b: Download complete
+605ce1bd3f31: Pull complete
+87c562fdbd94: Download complete
+87c562fdbd94: Pull complete
+faa3fed7500b: Pull complete
+Digest: sha256:72205cb4ba4e95412e4f44731c9ee4dc7840769aecfa8992294c945b25a4c177
+Status: Downloaded newer image for node:8.11.2-alpine
+ ---> 86b71ddd55fa
+Step 2/9 : RUN mkdir -p /usr/src/app
+ ---> Running in d8a84abed385
+Removing intermediate container d8a84abed385
+ ---> 89aa6517034c
+Step 3/9 : WORKDIR /usr/src/app
+Removing intermediate container 64db360179fc
+ ---> 64527ecb8ec1
+Step 4/9 : COPY package*.json /usr/src/app/
+ ---> 83363d58d1ee
+Step 5/9 : RUN npm install
+ ---> Running in a707b596ee86
+added 392 packages in 8s
+Removing intermediate container a707b596ee86
+ ---> 0f5d5b4087fb
+Step 6/9 : COPY . /usr/src/app
+ ---> 910df767ff40
+Step 7/9 : ENV PORT=80 NODE_ENV=bookstoreion
+ ---> Running in 4241e111c775
+Removing intermediate container 4241e111c775
+ ---> 23718800afc9
+Step 8/9 : EXPOSE 80
+ ---> Running in ab214537b0d1
+Removing intermediate container ab214537b0d1
+ ---> b5755f43f7db
+Step 9/9 : CMD [ "npm", "run", "start-api" ]
+ ---> Running in b4e591a6e402
+Removing intermediate container b4e591a6e402
+ ---> de75ea818dfa
+[Warning] One or more build-args [CI_IMAGE_NAME CI_IMAGE_TAG NPM_REGISTRY_SCOPE NPM_REGISTRY_TOKEN NPM_REGISTRY_URL] were not consumed
+Successfully built de75ea818dfa
+Successfully tagged registry.hub.docker.com/testt/containers-api:PR-36
+Creating network "153321638437056972f27dd88ab1eb9ebc2d6d9c9ecf998617cb0_default" with the default driver
+Building external-globs
+Step 1/9 : FROM node:8.11.2-alpine
+ ---> 86b71ddd55fa
+Step 2/9 : RUN mkdir -p /usr/src/app
+ ---> Using cache
+ ---> 89aa6517034c
+Step 3/9 : WORKDIR /usr/src/app
+ ---> Using cache
+ ---> 64527ecb8ec1
+Step 4/9 : COPY package*.json /usr/src/app/
+ ---> e8fddb8edb8c
+Step 5/9 : RUN npm install
+ ---> Running in 4a53807205c3
+added 392 packages in 7.379s
+Removing intermediate container 4a53807205c3
+ ---> 07f3b846bfa5
+Step 6/9 : COPY . /usr/src/app
+ ---> 3038be756456
+Step 7/9 : ENV PORT=80 NODE_ENV=bookstoreion
+ ---> Running in 649ceff8672e
+Removing intermediate container 649ceff8672e
+ ---> ecbd834198f7
+Step 8/9 : EXPOSE 80
+ ---> Running in 651de7961537
+Removing intermediate container 651de7961537
+ ---> 861452958c73
+Step 9/9 : CMD [ "npm", "run", "start-api" ]
+ ---> Running in c793cfa1c38d
+Removing intermediate container c793cfa1c38d
+ ---> e28638bf84a7
+Successfully built e28638bf84a7
+Successfully tagged 153321638437056972f27dd88ab1eb9ebc2d6d9c9ecf998617cb0_external-globs:latest
+Pulling bingo (bingo:3.4)...
+3.4: Pulling from library/bingo
+Digest: sha256:27f96e5c5d26fc3eb78f019720b0b7f1a00653eb44bb204a7a0f3ccd0050912f
+Status: Downloaded newer image for bingo:3.4
+Building containers-api
+Step 1/9 : FROM node:8.11.2-alpine
+ ---> 86b71ddd55fa
+Step 2/9 : RUN mkdir -p /usr/src/app
+ ---> Using cache
+ ---> 89aa6517034c
+Step 3/9 : WORKDIR /usr/src/app
+ ---> Using cache
+ ---> 64527ecb8ec1
+Step 4/9 : COPY package*.json /usr/src/app/
+ ---> Using cache
+ ---> e8fddb8edb8c
+Step 5/9 : RUN npm install
+ ---> Using cache
+ ---> 07f3b846bfa5
+Step 6/9 : COPY . /usr/src/app
+ ---> Using cache
+ ---> 3038be756456
+Step 7/9 : ENV PORT=80 NODE_ENV=bookstoreion
+ ---> Using cache
+ ---> ecbd834198f7
+Step 8/9 : EXPOSE 80
+ ---> Using cache
+ ---> 861452958c73
+Step 9/9 : CMD [ "npm", "run", "start-api" ]
+ ---> Using cache
+ ---> e28638bf84a7
+Successfully built e28638bf84a7
+Successfully tagged 153321638437056972f27dd88ab1eb9ebc2d6d9c9ecf998617cb0_containers-api:latest
+Building sut
+Step 1/9 : FROM node:8.11.2-alpine
+ ---> 86b71ddd55fa
+Step 2/9 : RUN mkdir -p /usr/src/app
+ ---> Using cache
+ ---> 89aa6517034c
+Step 3/9 : WORKDIR /usr/src/app
+ ---> Using cache
+ ---> 64527ecb8ec1
+Step 4/9 : COPY package*.json /usr/src/app/
+ ---> Using cache
+ ---> e8fddb8edb8c
+Step 5/9 : RUN npm install
+ ---> Using cache
+ ---> 07f3b846bfa5
+Step 6/9 : COPY . /usr/src/app
+ ---> Using cache
+ ---> 3038be756456
+Step 7/9 : ENV PORT=80 NODE_ENV=bookstoreion
+ ---> Using cache
+ ---> ecbd834198f7
+Step 8/9 : EXPOSE 80
+ ---> Using cache
+ ---> 861452958c73
+Step 9/9 : CMD [ "npm", "run", "start-api" ]
+ ---> Using cache
+ ---> e28638bf84a7
+Successfully built e28638bf84a7
+Successfully tagged 153321638437056972f27dd88ab1eb9ebc2d6d9c9ecf998617cb0_sut:latest
+Creating 153321638437056972f27dd88ab1eb9ebc2d6d9c9ecf998617cb0_external-globs_1 ... 
+Creating 153321638437056972f27dd88ab1eb9ebc2d6d9c9ecf998617cb0_bingo_1          ... 
+[4A[2K
+Creating 153321638437056972f27dd88ab1eb9ebc2d6d9c9ecf998617cb0_external-globs_1 ... [32mdone[0m
+[4B[3A[2K
+Creating 153321638437056972f27dd88ab1eb9ebc2d6d9c9ecf998617cb0_bingo_1          ... [32mdone[0m
+[3BCreating 153321638437056972f27dd88ab1eb9ebc2d6d9c9ecf998617cb0_containers-api_1   ... 
+[2A[2K
+Creating 153321638437056972f27dd88ab1eb9ebc2d6d9c9ecf998617cb0_containers-api_1   ... [32mdone[0m
+[2BCreating 153321638437056972f27dd88ab1eb9ebc2d6d9c9ecf998617cb0_sut_1            ... 
+[1A[2K
+Creating 153321638437056972f27dd88ab1eb9ebc2d6d9c9ecf998617cb0_sut_1            ... [32mdone[0m
+[1BAttaching to 153321638437056972f27dd88ab1eb9ebc2d6d9c9ecf998617cb0_external-globs_1, 153321638437056972f27dd88ab1eb9ebc2d6d9c9ecf998617cb0_bingo_1, 153321638437056972f27dd88ab1eb9ebc2d6d9c9ecf998617cb0_containers-api_1, 153321638437056972f27dd88ab1eb9ebc2d6d9c9ecf998617cb0_sut_1
+[33mbingo_1           |[0m 2018-08-02T13:27:11.345+0000 I CONTROL  [initandlisten] bingoDB starting : pid=1 port=27017 dbpath=/data/db 64-bit host=120595cbc363
+[33mbingo_1           |[0m 2018-08-02T13:27:11.345+0000 I CONTROL  [initandlisten] db version v3.4.16
+[33mbingo_1           |[0m 2018-08-02T13:27:11.345+0000 I CONTROL  [initandlisten] git version: 0d6a9242c11b99ddadcfb6e86a850b6ba487530a
+[33mbingo_1           |[0m 2018-08-02T13:27:11.345+0000 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.1t  3 May 2016
+[33mbingo_1           |[0m 2018-08-02T13:27:11.345+0000 I CONTROL  [initandlisten] allocator: tcmalloc
+[33mbingo_1           |[0m 2018-08-02T13:27:11.345+0000 I CONTROL  [initandlisten] modules: none
+[33mbingo_1           |[0m 2018-08-02T13:27:11.345+0000 I CONTROL  [initandlisten] build environment:
+[33mbingo_1           |[0m 2018-08-02T13:27:11.345+0000 I CONTROL  [initandlisten]     distmod: debian81
+[33mbingo_1           |[0m 2018-08-02T13:27:11.345+0000 I CONTROL  [initandlisten]     distarch: x86_64
+[33mbingo_1           |[0m 2018-08-02T13:27:11.345+0000 I CONTROL  [initandlisten]     target_arch: x86_64
+[33mbingo_1           |[0m 2018-08-02T13:27:11.345+0000 I CONTROL  [initandlisten] options: {}
+[33mbingo_1           |[0m 2018-08-02T13:27:11.349+0000 I STORAGE  [initandlisten] 
+[33mbingo_1           |[0m 2018-08-02T13:27:11.349+0000 I STORAGE  [initandlisten] ** WARNING: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine
+[33mbingo_1           |[0m 2018-08-02T13:27:11.349+0000 I STORAGE  [initandlisten] **          See http://dochub.bingodb.org/core/prodnotes-filesystem
+[33mbingo_1           |[0m 2018-08-02T13:27:11.349+0000 I STORAGE  [initandlisten] wiredtiger_open config: create,cache_size=1463M,session_max=20000,eviction=(threads_min=4,threads_max=4),config_base=false,statistics=(fast),log=(enabled=true,archive=true,path=journal,compressor=snappy),file_manager=(close_idle_time=100000),checkpoint=(wait=60,log_size=2GB),statistics_log=(wait=0),verbose=(recovery_progress),
+[33mbingo_1           |[0m 2018-08-02T13:27:11.391+0000 I CONTROL  [initandlisten] 
+[33mbingo_1           |[0m 2018-08-02T13:27:11.391+0000 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+[33mbingo_1           |[0m 2018-08-02T13:27:11.391+0000 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+[33mbingo_1           |[0m 2018-08-02T13:27:11.391+0000 I CONTROL  [initandlisten] 
+[33mbingo_1           |[0m 2018-08-02T13:27:11.392+0000 I CONTROL  [initandlisten] 
+[33mbingo_1           |[0m 2018-08-02T13:27:11.392+0000 I CONTROL  [initandlisten] ** WARNING: /sys/kernel/mm/transparent_hugepage/defrag is 'always'.
+[33mbingo_1           |[0m 2018-08-02T13:27:11.392+0000 I CONTROL  [initandlisten] **        We suggest setting it to 'never'
+[33mbingo_1           |[0m 2018-08-02T13:27:11.392+0000 I CONTROL  [initandlisten] 
+[33mbingo_1           |[0m 2018-08-02T13:27:11.399+0000 I FTDC     [initandlisten] Initializing full-time diagnostic data capture with directory '/data/db/diagnostic.data'
+[33mbingo_1           |[0m 2018-08-02T13:27:11.412+0000 I INDEX    [initandlisten] build index on: admin.system.version properties: { v: 2, key: { version: 1 }, name: "incompatible_with_version_32", ns: "admin.system.version" }
+[33mbingo_1           |[0m 2018-08-02T13:27:11.412+0000 I INDEX    [initandlisten] 	 building index using bulk method; build may temporarily use up to 500 megabytes of RAM
+[33mbingo_1           |[0m 2018-08-02T13:27:11.413+0000 I INDEX    [initandlisten] build index done.  scanned 0 total records. 0 secs
+[33mbingo_1           |[0m 2018-08-02T13:27:11.413+0000 I COMMAND  [initandlisten] setting featureCompatibilityVersion to 3.4
+[33mbingo_1           |[0m 2018-08-02T13:27:11.413+0000 I NETWORK  [thread1] waiting for connections on port 27017
+[32mcontainers-api_1    |[0m 
+[32mcontainers-api_1    |[0m > containers-api@0.0.1 dev-nodemon /usr/src/app
+[32mcontainers-api_1    |[0m > nodemon --legacy-watch --exec 'NODE_ENV=development node --inspect=0.0.0.0:5858 ./bin/start.js'
+[32mcontainers-api_1    |[0m 
+[32mcontainers-api_1    |[0m [33m[nodemon] 1.12.1[39m
+[32mcontainers-api_1    |[0m [33m[nodemon] to restart at any time, enter `rs`[39m
+[32mcontainers-api_1    |[0m [33m[nodemon] watching: *.*[39m
+[32mcontainers-api_1    |[0m [32m[nodemon] starting `NODE_ENV=development node --inspect=0.0.0.0:5858 ./bin/start.js`[39m
+[32mcontainers-api_1    |[0m Debugger listening on ws://0.0.0.0:5858/d457086c-3443-48a0-a9c4-42c549ce1188
+[32mcontainers-api_1    |[0m For help see https://nodejs.org/en/docs/inspector
+[32mcontainers-api_1    |[0m info: PORT=80
+[32mcontainers-api_1    |[0m info: bingoDB_CONNECTIONSTRING=bingodb://bingo/containers-api
+[32mcontainers-api_1    |[0m info: BASE_PUBLIC_PATH=/api
+[32mcontainers-api_1    |[0m info: POST_EVENTS_TO=http://external-globs/have-events-here, http://external-globs/also-have-events-here,
+[32mcontainers-api_1    |[0m info: NODE_VERSION=8.11.2
+[32mcontainers-api_1    |[0m info: YARN_VERSION=1.6.0
+[32mcontainers-api_1    |[0m info: HOSTNAME=c9067a4f29cf
+[32mcontainers-api_1    |[0m info: SHLVL=3
+[32mcontainers-api_1    |[0m info: daemons_API_URL=http://external-globs/daemons-api-url
+[32mcontainers-api_1    |[0m info: HOME=/root
+[32mcontainers-api_1    |[0m info: daemonsS_MAIN_DOMAIN=.testt.glob
+[32mcontainers-api_1    |[0m info: UC_API_URL=http://external-globs/solitary-url
+[32mcontainers-api_1    |[0m info: NODE=/usr/local/bin/node
+[32mcontainers-api_1    |[0m info: PATH=/usr/local/lib/node_modules/npm/node_modules/npm-lifecycle/node-gyp-bin:/usr/src/app/node_modules/.bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+[32mcontainers-api_1    |[0m info: clusters_WEBHOOK_BASE_URL=http://external-globs/clusters-webhook
+[32mcontainers-api_1    |[0m info: PWD=/usr/src/app
+[32mcontainers-api_1    |[0m info: bookstoreS_GET_BY_qqq_URL=http://external-globs/bookstore-get-by-qqq-url
+[32mcontainers-api_1    |[0m info: NODE_ENV=development
+[32mcontainers-api_1    |[0m info: INIT_CWD=/usr/src/app
+[33mbingo_1           |[0m 2018-08-02T13:27:13.154+0000 I NETWORK  [thread1] connection accepted from 172.25.0.4:59924 #1 (1 connection now open)
+[33mbingo_1           |[0m 2018-08-02T13:27:13.161+0000 I NETWORK  [conn1] received client metadata from 172.25.0.4:59924 conn1: { driver: { name: "nodejs", version: "3.0.10" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.4.0-128-generic" }, platform: "Node.js v8.11.2, LE, bingodb-core: 3.0.9" }
+[33mbingo_1           |[0m 2018-08-02T13:27:13.186+0000 I INDEX    [conn1] build index on: containers-api.bookstores properties: { v: 2, key: { qqq: 1 }, name: "qqq_1", ns: "containers-api.bookstores", background: true }
+[33mbingo_1           |[0m 2018-08-02T13:27:13.186+0000 I INDEX    [conn1] build index done.  scanned 0 total records. 0 secs
+[33mbingo_1           |[0m 2018-08-02T13:27:13.195+0000 I INDEX    [conn1] build index on: containers-api.bookstores properties: { v: 2, unique: true, key: { undercover_id: 1, qqq: 1 }, name: "undercover_id_1_qqq_1", ns: "containers-api.bookstores", background: true }
+[33mbingo_1           |[0m 2018-08-02T13:27:13.195+0000 I INDEX    [conn1] build index done.  scanned 0 total records. 0 secs
+[35msut_1             |[0m 
+[35msut_1             |[0m 
+[35msut_1             |[0m   DELETE /containers/:id/pages/:id
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received POST /api/containers request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for POST /api/containers request: delete-containers-id-pages-id-api
+[33mbingo_1           |[0m 2018-08-02T13:27:22.664+0000 I INDEX    [conn1] build index on: delete-containers-id-pages-id-api.bookstores properties: { v: 2, key: { qqq: 1 }, name: "qqq_1", ns: "delete-containers-id-pages-id-api.bookstores", background: true }
+[33mbingo_1           |[0m 2018-08-02T13:27:22.664+0000 I INDEX    [conn1] build index done.  scanned 0 total records. 0 secs
+[33mbingo_1           |[0m 2018-08-02T13:27:22.669+0000 I INDEX    [conn1] build index on: delete-containers-id-pages-id-api.bookstores properties: { v: 2, unique: true, key: { undercover_id: 1, qqq: 1 }, name: "undercover_id_1_qqq_1", ns: "delete-containers-id-pages-id-api.bookstores", background: true }
+[33mbingo_1           |[0m 2018-08-02T13:27:22.670+0000 I INDEX    [conn1] build index done.  scanned 0 total records. 0 secs
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/test/glob [32m200 [0m17.601 ms - 2[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - undercover created. Id: 5b6306bab00e0c001e05ef3a
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/globs [32m200 [0m1.291 ms - 92[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - daemons undercover created: id "1878269"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/gnext [32m200 [0m0.694 ms - 216[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob gnext created with name "non-existing-nice-animal"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/droppables [32m200 [0m0.468 ms - 243[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob droppable created with name "quickyabc"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/selectable-mistery [32m200 [0m0.382 ms - 256[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob antenna method created with name "dropss"
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 121 milliseconds with status 201
+[32mcontainers-api_1    |[0m info: XXX_AB delete-containers-id-pages-id-api - Received POST /api/containers/5b6306bab00e0c001e05ef3a/pages request
+[32mcontainers-api_1    |[0m info: XXX_AB delete-containers-id-pages-id-api - Y-Header-VZ for POST /api/containers/5b6306bab00e0c001e05ef3a/pages request: delete-containers-id-pages-id-api
+[33mbingo_1           |[0m 2018-08-02T13:27:22.770+0000 I NETWORK  [thread1] connection accepted from 172.25.0.4:59940 #2 (2 connections now open)
+[36mexternal-globs_1  |[0m [0mGET /daemons-api-url/globs/1878269 [32m200 [0m0.836 ms - 64[0m
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/globs/1878269/pages [32m200 [0m0.667 ms - 182[0m
+[32mcontainers-api_1    |[0m info: XXX_AB delete-containers-id-pages-id-api - Completed in 27 milliseconds with status 200
+[35msut_1             |[0m     for a non daemons type undercover
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received POST /api/containers request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for POST /api/containers request: delete-containers-id-pages-id-api
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/test/glob [32m200 [0m0.498 ms - 2[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - undercover created. Id: 5b6306bab00e0c001e05ef3b
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/globs [32m200 [0m0.391 ms - 92[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - daemons undercover created: id "4121373"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/gnext [32m200 [0m0.346 ms - 216[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob gnext created with name "non-existing-nice-animal"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/droppables [32m200 [0m0.709 ms - 242[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob droppable created with name "quickyabc"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/selectable-mistery [32m200 [0m0.461 ms - 256[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob antenna method created with name "dropss"
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 33 milliseconds with status 201
+[32mcontainers-api_1    |[0m info: XXX_AB delete-containers-id-pages-id-api - Received DELETE /api/containers/5b6306bab00e0c001e05ef3b/pages/2241262 request
+[32mcontainers-api_1    |[0m info: XXX_AB delete-containers-id-pages-id-api - Y-Header-VZ for DELETE /api/containers/5b6306bab00e0c001e05ef3b/pages/2241262 request: delete-containers-id-pages-id-api
+[32mcontainers-api_1    |[0m info: XXX_AB delete-containers-id-pages-id-api - Completed in 5 milliseconds with status 404
+[35msut_1             |[0m       ✓ should respond 404 Not Found (45ms)
+[35msut_1             |[0m     for a daemons type undercover
+[32mcontainers-api_1    |[0m info: XXX_AB delete-containers-id-pages-id-api - Received DELETE /api/containers/5b6306bab00e0c001e05ef3a/pages/2241262 request
+[32mcontainers-api_1    |[0m info: XXX_AB delete-containers-id-pages-id-api - Y-Header-VZ for DELETE /api/containers/5b6306bab00e0c001e05ef3a/pages/2241262 request: delete-containers-id-pages-id-api
+[36mexternal-globs_1  |[0m [0mGET /daemons-api-url/globs/1878269 [32m200 [0m0.382 ms - 65[0m
+[36mexternal-globs_1  |[0m [0mDELETE /daemons-api-url/globs/1878269/pages/2241262 [32m200 [0m0.390 ms - 2[0m
+[32mcontainers-api_1    |[0m info: XXX_AB delete-containers-id-pages-id-api - Completed in 11 milliseconds with status 200
+[35msut_1             |[0m       ✓ should respond 200 Ok
+[35msut_1             |[0m 
+[35msut_1             |[0m   DELETE /containers/:id/haves/:id
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received POST /api/containers request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for POST /api/containers request: delete-containers-id-haves-id-api
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/test/glob [32m200 [0m0.487 ms - 2[0m
+[33mbingo_1           |[0m 2018-08-02T13:27:22.867+0000 I INDEX    [conn1] build index on: delete-containers-id-haves-id-api.bookstores properties: { v: 2, key: { qqq: 1 }, name: "qqq_1", ns: "delete-containers-id-haves-id-api.bookstores", background: true }
+[33mbingo_1           |[0m 2018-08-02T13:27:22.867+0000 I INDEX    [conn1] build index done.  scanned 0 total records. 0 secs
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - undercover created. Id: 5b6306bab00e0c001e05ef3c
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/globs [32m200 [0m0.418 ms - 91[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - daemons undercover created: id "126134"
+[33mbingo_1           |[0m 2018-08-02T13:27:22.880+0000 I INDEX    [conn2] build index on: delete-containers-id-haves-id-api.bookstores properties: { v: 2, unique: true, key: { undercover_id: 1, qqq: 1 }, name: "undercover_id_1_qqq_1", ns: "delete-containers-id-haves-id-api.bookstores", background: true }
+[33mbingo_1           |[0m 2018-08-02T13:27:22.881+0000 I INDEX    [conn2] build index done.  scanned 0 total records. 0 secs
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/gnext [32m200 [0m0.367 ms - 216[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob gnext created with name "non-existing-nice-animal"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/droppables [32m200 [0m0.376 ms - 243[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob droppable created with name "quickyabc"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/selectable-mistery [32m200 [0m0.320 ms - 256[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob antenna method created with name "dropss"
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 44 milliseconds with status 201
+[32mcontainers-api_1    |[0m info: XXX_AB delete-containers-id-haves-id-api - Received POST /api/containers/5b6306bab00e0c001e05ef3c/haves request
+[32mcontainers-api_1    |[0m info: XXX_AB delete-containers-id-haves-id-api - Y-Header-VZ for POST /api/containers/5b6306bab00e0c001e05ef3c/haves request: delete-containers-id-haves-id-api
+[36mexternal-globs_1  |[0m [0mGET /daemons-api-url/globs/126134 [32m200 [0m0.244 ms - 63[0m
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/globs/126134/haves [32m200 [0m0.369 ms - 181[0m
+[32mcontainers-api_1    |[0m info: XXX_AB delete-containers-id-haves-id-api - Completed in 13 milliseconds with status 200
+[35msut_1             |[0m     for a non daemons type undercover
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received POST /api/containers request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for POST /api/containers request: delete-containers-id-haves-id-api
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/test/glob [32m200 [0m0.387 ms - 2[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - undercover created. Id: 5b6306bab00e0c001e05ef3d
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/globs [32m200 [0m0.665 ms - 92[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - daemons undercover created: id "8282540"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/gnext [32m200 [0m0.344 ms - 216[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob gnext created with name "non-existing-nice-animal"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/droppables [32m200 [0m0.376 ms - 243[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob droppable created with name "quickyabc"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/selectable-mistery [32m200 [0m0.364 ms - 256[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob antenna method created with name "dropss"
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 20 milliseconds with status 201
+[32mcontainers-api_1    |[0m info: XXX_AB delete-containers-id-haves-id-api - Received DELETE /api/containers/5b6306bab00e0c001e05ef3d/haves/540046 request
+[32mcontainers-api_1    |[0m info: XXX_AB delete-containers-id-haves-id-api - Y-Header-VZ for DELETE /api/containers/5b6306bab00e0c001e05ef3d/haves/540046 request: delete-containers-id-haves-id-api
+[32mcontainers-api_1    |[0m info: XXX_AB delete-containers-id-haves-id-api - Completed in 3 milliseconds with status 404
+[35msut_1             |[0m       ✓ should respond 404 Not Found
+[35msut_1             |[0m     for a daemons type undercover
+[32mcontainers-api_1    |[0m info: XXX_AB delete-containers-id-haves-id-api - Received DELETE /api/containers/5b6306bab00e0c001e05ef3c/haves/540046 request
+[32mcontainers-api_1    |[0m info: XXX_AB delete-containers-id-haves-id-api - Y-Header-VZ for DELETE /api/containers/5b6306bab00e0c001e05ef3c/haves/540046 request: delete-containers-id-haves-id-api
+[36mexternal-globs_1  |[0m [0mGET /daemons-api-url/globs/126134 [32m200 [0m0.301 ms - 63[0m
+[36mexternal-globs_1  |[0m [0mDELETE /daemons-api-url/globs/126134/haves/540046 [32m200 [0m0.233 ms - 2[0m
+[32mcontainers-api_1    |[0m info: XXX_AB delete-containers-id-haves-id-api - Completed in 9 milliseconds with status 200
+[35msut_1             |[0m       ✓ should respond 200 Ok
+[35msut_1             |[0m 
+[35msut_1             |[0m   DELETE /containers/:id/blinbling-rates/:id
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received POST /api/containers request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for POST /api/containers request: delete-containers-id-blinbling-rates-id-api
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/test/glob [32m200 [0m0.506 ms - 2[0m
+[33mbingo_1           |[0m 2018-08-02T13:27:22.977+0000 I INDEX    [conn1] build index on: delete-containers-id-blinbling-rates-id-api.bookstores properties: { v: 2, key: { qqq: 1 }, name: "qqq_1", ns: "delete-containers-id-blinbling-rates-id-api.bookstores", background: true }
+[33mbingo_1           |[0m 2018-08-02T13:27:22.977+0000 I INDEX    [conn1] build index done.  scanned 0 total records. 0 secs
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - undercover created. Id: 5b6306bab00e0c001e05ef3e
+[33mbingo_1           |[0m 2018-08-02T13:27:22.988+0000 I INDEX    [conn1] build index on: delete-containers-id-blinbling-rates-id-api.bookstores properties: { v: 2, unique: true, key: { undercover_id: 1, qqq: 1 }, name: "undercover_id_1_qqq_1", ns: "delete-containers-id-blinbling-rates-id-api.bookstores", background: true }
+[33mbingo_1           |[0m 2018-08-02T13:27:22.988+0000 I INDEX    [conn1] build index done.  scanned 0 total records. 0 secs
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/globs [32m200 [0m0.457 ms - 92[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - daemons undercover created: id "7682054"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/gnext [32m200 [0m0.417 ms - 225[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob gnext created with name "non-existing-nice-animal"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/droppables [32m200 [0m0.444 ms - 243[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob droppable created with name "quickyabc"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/selectable-mistery [32m200 [0m0.468 ms - 256[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob antenna method created with name "dropss"
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 46 milliseconds with status 201
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received POST /api/containers/5b6306bab00e0c001e05ef3e/blinbling-rates request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for POST /api/containers/5b6306bab00e0c001e05ef3e/blinbling-rates request: delete-containers-id-blinbling-rates-id-api
+[36mexternal-globs_1  |[0m [0mGET /daemons-api-url/globs/7682054 [32m200 [0m0.286 ms - 65[0m
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/droppables [32m200 [0m0.404 ms - 226[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 12 milliseconds with status 200
+[35msut_1             |[0m     for a non daemons type undercover
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received POST /api/containers request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for POST /api/containers request: delete-containers-id-blinbling-rates-id-api
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/test/glob [32m200 [0m0.579 ms - 2[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - undercover created. Id: 5b6306bbb00e0c001e05ef3f
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/globs [32m200 [0m0.384 ms - 92[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - daemons undercover created: id "1131561"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/gnext [32m200 [0m0.370 ms - 225[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob gnext created with name "non-existing-nice-animal"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/droppables [32m200 [0m0.410 ms - 243[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob droppable created with name "quickyabc"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/selectable-mistery [32m200 [0m0.358 ms - 256[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob antenna method created with name "dropss"
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 25 milliseconds with status 201
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received DELETE /api/containers/5b6306bbb00e0c001e05ef3f/blinbling-rates/239070 request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for DELETE /api/containers/5b6306bbb00e0c001e05ef3f/blinbling-rates/239070 request: delete-containers-id-blinbling-rates-id-api
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 4 milliseconds with status 404
+[35msut_1             |[0m       ✓ should respond 404 Not Found
+[35msut_1             |[0m     for a daemons type undercover
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received DELETE /api/containers/5b6306bab00e0c001e05ef3e/blinbling-rates/239070 request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for DELETE /api/containers/5b6306bab00e0c001e05ef3e/blinbling-rates/239070 request: delete-containers-id-blinbling-rates-id-api
+[36mexternal-globs_1  |[0m [0mGET /daemons-api-url/globs/7682054 [32m200 [0m0.257 ms - 65[0m
+[36mexternal-globs_1  |[0m [0mDELETE /solitary-url/droppables/239070 [32m204 [0m0.775 ms - -[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 12 milliseconds with status 204
+[35msut_1             |[0m       ✓ should respond 200 Ok
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received POST /api/containers/5b6306bab00e0c001e05ef3e/blinbling-rates request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for POST /api/containers/5b6306bab00e0c001e05ef3e/blinbling-rates request: delete-containers-id-blinbling-rates-id-api
+[36mexternal-globs_1  |[0m [0mGET /daemons-api-url/globs/7682054 [32m200 [0m0.288 ms - 65[0m
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/droppables [32m200 [0m0.479 ms - 230[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 10 milliseconds with status 200
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received GET /api/containers/5b6306bab00e0c001e05ef3e/blinbling-rates/986296 request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for GET /api/containers/5b6306bab00e0c001e05ef3e/blinbling-rates/986296 request: delete-containers-id-blinbling-rates-id-api
+[36mexternal-globs_1  |[0m [0mGET /daemons-api-url/globs/7682054 [32m200 [0m0.282 ms - 65[0m
+[36mexternal-globs_1  |[0m [0mGET /solitary-url/droppables/986296 [32m200 [0m0.636 ms - 230[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 13 milliseconds with status 200
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received DELETE /api/containers/5b6306bab00e0c001e05ef3e/blinbling-rates/986296 request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for DELETE /api/containers/5b6306bab00e0c001e05ef3e/blinbling-rates/986296 request: delete-containers-id-blinbling-rates-id-api
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received GET /api/containers/5b6306bab00e0c001e05ef3e/blinbling-rates/986296 request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for GET /api/containers/5b6306bab00e0c001e05ef3e/blinbling-rates/986296 request: delete-containers-id-blinbling-rates-id-api
+[33mbingo_1           |[0m 2018-08-02T13:27:23.120+0000 I NETWORK  [thread1] connection accepted from 172.25.0.4:60058 #3 (3 connections now open)
+[36mexternal-globs_1  |[0m [0mGET /daemons-api-url/globs/7682054 [32m200 [0m0.255 ms - 65[0m
+[36mexternal-globs_1  |[0m [0mDELETE /solitary-url/droppables/986296 [32m204 [0m0.294 ms - -[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 16 milliseconds with status 204
+[36mexternal-globs_1  |[0m [0mGET /daemons-api-url/globs/7682054 [32m200 [0m0.208 ms - 65[0m
+[36mexternal-globs_1  |[0m [0mGET /solitary-url/droppables/986296 [33m404 [0m0.243 ms - 9[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 23 milliseconds with status 404
+[35msut_1             |[0m       ✓ should remove the blinbling rate (60ms)
+[35msut_1             |[0m     when mister blob responds with an error
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received DELETE /api/containers/5b6306bab00e0c001e05ef3e/blinbling-rates/error request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for DELETE /api/containers/5b6306bab00e0c001e05ef3e/blinbling-rates/error request: delete-containers-id-blinbling-rates-id-api
+[36mexternal-globs_1  |[0m [0mGET /daemons-api-url/globs/7682054 [32m200 [0m0.275 ms - 65[0m
+[36mexternal-globs_1  |[0m [0mDELETE /solitary-url/droppables/error [31m500 [0m0.357 ms - 18[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 11 milliseconds with status 500
+[35msut_1             |[0m       ✓ should forward the error
+[35msut_1             |[0m 
+[35msut_1             |[0m   DELETE /containers/:id/qqqs/:qqq
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received POST /api/containers request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for POST /api/containers request: delete-containers-id-qqqs-qqq-api
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/test/glob [32m200 [0m0.436 ms - 2[0m
+[33mbingo_1           |[0m 2018-08-02T13:27:23.175+0000 I INDEX    [conn2] build index on: delete-containers-id-qqqs-qqq-api.bookstores properties: { v: 2, key: { qqq: 1 }, name: "qqq_1", ns: "delete-containers-id-qqqs-qqq-api.bookstores", background: true }
+[33mbingo_1           |[0m 2018-08-02T13:27:23.175+0000 I INDEX    [conn2] build index done.  scanned 0 total records. 0 secs
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - undercover created. Id: 5b6306bbb00e0c001e05ef40
+[33mbingo_1           |[0m 2018-08-02T13:27:23.186+0000 I INDEX    [conn3] build index on: delete-containers-id-qqqs-qqq-api.bookstores properties: { v: 2, unique: true, key: { undercover_id: 1, qqq: 1 }, name: "undercover_id_1_qqq_1", ns: "delete-containers-id-qqqs-qqq-api.bookstores", background: true }
+[33mbingo_1           |[0m 2018-08-02T13:27:23.186+0000 I INDEX    [conn3] build index done.  scanned 0 total records. 0 secs
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/globs [32m200 [0m0.464 ms - 92[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - daemons undercover created: id "3999576"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/gnext [32m200 [0m0.346 ms - 216[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob gnext created with name "non-existing-nice-animal"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/droppables [32m200 [0m0.349 ms - 242[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob droppable created with name "quickyabc"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/selectable-mistery [32m200 [0m0.301 ms - 256[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob antenna method created with name "dropss"
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 41 milliseconds with status 201
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received POST /api/containers/5b6306bbb00e0c001e05ef40/qqqs request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for POST /api/containers/5b6306bbb00e0c001e05ef40/qqqs request: delete-containers-id-qqqs-qqq-api
+[36mexternal-globs_1  |[0m [0mGET /bookstore-get-by-qqq-url/delete-containers-id-qqqs-qqq-api-bookstore [32m200 [0m0.453 ms - 1164[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Retrieving bookstore with qqq "delete-containers-id-qqqs-qqq-api-bookstore" from http://external-globs/bookstore-get-by-qqq-url successfull
+[36mexternal-globs_1  |[0m [0mPUT /daemons-api-url/globs/3999576/bookstore/delete-containers-id-qqqs-qqq-api-bookstore [32m200 [0m0.530 ms - 2[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Publishing bookstore "delete-containers-id-qqqs-qqq-api-bookstore" to daemons "3999576". Success
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 17 milliseconds with status 200
+[35msut_1             |[0m     without Y-Header-VZ
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received DELETE /api/containers/5b6306bbb00e0c001e05ef40/qqqs/delete-containers-id-qqqs-qqq-api-bookstore request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for DELETE /api/containers/5b6306bbb00e0c001e05ef40/qqqs/delete-containers-id-qqqs-qqq-api-bookstore request: MISSING
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 1 milliseconds with status 401
+[35msut_1             |[0m       ✓ should respond 401 Unauthorized
+[35msut_1             |[0m     with non existent undercover
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received DELETE /api/containers/5b2b9ac9d119c705412bd471/qqqs/delete-containers-id-qqqs-qqq-api-bookstore request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for DELETE /api/containers/5b2b9ac9d119c705412bd471/qqqs/delete-containers-id-qqqs-qqq-api-bookstore request: delete-containers-id-qqqs-qqq-api
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 3 milliseconds with status 404
+[35msut_1             |[0m       ✓ should respond 404 Not Found
+[35msut_1             |[0m     with valid data
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received DELETE /api/containers/5b6306bbb00e0c001e05ef40/qqqs/delete-containers-id-qqqs-qqq-api-bookstore request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for DELETE /api/containers/5b6306bbb00e0c001e05ef40/qqqs/delete-containers-id-qqqs-qqq-api-bookstore request: delete-containers-id-qqqs-qqq-api
+[36mexternal-globs_1  |[0m [0mDELETE /daemons-api-url/globs/3999576/bookstore/delete-containers-id-qqqs-qqq-api-bookstore [32m200 [0m0.324 ms - 2[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Unpublishing bookstore "delete-containers-id-qqqs-qqq-api-bookstore" from daemons "5b6306bbb00e0c001e05ef40". Success
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 10 milliseconds with status 200
+[35msut_1             |[0m       ✓ should respond 200 Ok
+[35msut_1             |[0m 
+[35msut_1             |[0m   DELETE /containers/:id
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received POST /api/containers request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for POST /api/containers request: delete-containers-id-api
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/test/glob [32m200 [0m0.463 ms - 2[0m
+[33mbingo_1           |[0m 2018-08-02T13:27:23.270+0000 I INDEX    [conn2] build index on: delete-containers-id-api.bookstores properties: { v: 2, key: { qqq: 1 }, name: "qqq_1", ns: "delete-containers-id-api.bookstores", background: true }
+[33mbingo_1           |[0m 2018-08-02T13:27:23.271+0000 I INDEX    [conn2] build index done.  scanned 0 total records. 0 secs
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - undercover created. Id: 5b6306bbb00e0c001e05ef42
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/globs [32m200 [0m0.428 ms - 92[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - daemons undercover created: id "8490408"
+[33mbingo_1           |[0m 2018-08-02T13:27:23.286+0000 I INDEX    [conn2] build index on: delete-containers-id-api.bookstores properties: { v: 2, unique: true, key: { undercover_id: 1, qqq: 1 }, name: "undercover_id_1_qqq_1", ns: "delete-containers-id-api.bookstores", background: true }
+[33mbingo_1           |[0m 2018-08-02T13:27:23.287+0000 I INDEX    [conn2] build index done.  scanned 0 total records. 0 secs
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/gnext [32m200 [0m0.377 ms - 207[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob gnext created with name "non-existing-nice-animal"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/droppables [32m200 [0m0.385 ms - 243[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob droppable created with name "quickyabc"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/selectable-mistery [32m200 [0m0.359 ms - 256[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob antenna method created with name "dropss"
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 47 milliseconds with status 201
+[35msut_1             |[0m     without Y-Header-VZ
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received DELETE /api/containers/5b6306bbb00e0c001e05ef42 request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for DELETE /api/containers/5b6306bbb00e0c001e05ef42 request: MISSING
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 1 milliseconds with status 401
+[35msut_1             |[0m       ✓ should respond 401 Unauthorized
+[35msut_1             |[0m     with non existing undercover
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received DELETE /api/containers/non-exising request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for DELETE /api/containers/non-exising request: delete-containers-id-api
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 4 milliseconds with status 404
+[35msut_1             |[0m       ✓ should respond 404 Not Found
+[35msut_1             |[0m     with existing undercover
+[32mcontainers-api_1    |[0m (node:30) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "non-exising" at path "_id" for model "undercover"
+[32mcontainers-api_1    |[0m     at new CastError (/usr/src/app/node_modules/bingoose/lib/error/cast.js:29:11)
+[32mcontainers-api_1    |[0m     at ObjectId.cast (/usr/src/app/node_modules/bingoose/lib/schema/objectid.js:158:13)
+[32mcontainers-api_1    |[0m     at ObjectId.SchemaType.applySetters (/usr/src/app/node_modules/bingoose/lib/schematype.js:724:12)
+[32mcontainers-api_1    |[0m     at ObjectId.SchemaType._castForQuery (/usr/src/app/node_modules/bingoose/lib/schematype.js:1113:15)
+[32mcontainers-api_1    |[0m     at ObjectId.SchemaType.castForQuery (/usr/src/app/node_modules/bingoose/lib/schematype.js:1103:15)
+[32mcontainers-api_1    |[0m     at ObjectId.SchemaType.castForQueryWrapper (/usr/src/app/node_modules/bingoose/lib/schematype.js:1082:15)
+[32mcontainers-api_1    |[0m     at cast (/usr/src/app/node_modules/bingoose/lib/cast.js:303:32)
+[32mcontainers-api_1    |[0m     at model.Query.Query.cast (/usr/src/app/node_modules/bingoose/lib/query.js:3355:12)
+[32mcontainers-api_1    |[0m     at model.Query.Query._castConditions (/usr/src/app/node_modules/bingoose/lib/query.js:1327:10)
+[32mcontainers-api_1    |[0m     at model.Query.Query._findOne (/usr/src/app/node_modules/bingoose/lib/query.js:1552:8)
+[32mcontainers-api_1    |[0m     at process.nextTick (/usr/src/app/node_modules/kareem/index.js:333:33)
+[32mcontainers-api_1    |[0m     at _combinedTickCallback (internal/process/next_tick.js:131:7)
+[32mcontainers-api_1    |[0m     at process._tickCallback (internal/process/next_tick.js:180:9)
+[32mcontainers-api_1    |[0m (node:30) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+[32mcontainers-api_1    |[0m (node:30) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+[32mcontainers-api_1    |[0m info: XXX_AB test-request - Received DELETE /api/containers/5b6306bbb00e0c001e05ef42 request
+[32mcontainers-api_1    |[0m info: XXX_AB test-request - Y-Header-VZ for DELETE /api/containers/5b6306bbb00e0c001e05ef42 request: delete-containers-id-api
+[36mexternal-globs_1  |[0m [0mGET /daemons-api-url/globs/8490408 [32m200 [0m0.237 ms - 65[0m
+[36mexternal-globs_1  |[0m [0mDELETE /daemons-api-url/globs/8490408 [32m204 [0m0.501 ms - -[0m
+[32mcontainers-api_1    |[0m info: XXX_AB test-request - daemons undercover deleted: id "8490408"
+[36mexternal-globs_1  |[0m [0mDELETE /solitary-url/gnext/8490408nice-animal [32m204 [0m0.249 ms - -[0m
+[32mcontainers-api_1    |[0m info: XXX_AB test-request - mister blob gnext deleted: name "8490408nice-animal"
+[32mcontainers-api_1    |[0m info: XXX_AB test-request - undercover deleted for tenant "delete-containers-id-api" of id "undefined"
+[32mcontainers-api_1    |[0m info: XXX_AB test-request - Completed in 19 milliseconds with status 204
+[35msut_1             |[0m       ✓ should respond 204 No Content
+[35msut_1             |[0m 
+[35msut_1             |[0m   GET /containers/:id/pages/:id
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received POST /api/containers request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for POST /api/containers request: get-containers-id-pages-id-api
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/test/glob [32m200 [0m0.430 ms - 2[0m
+[33mbingo_1           |[0m 2018-08-02T13:27:23.359+0000 I INDEX    [conn2] build index on: get-containers-id-pages-id-api.bookstores properties: { v: 2, key: { qqq: 1 }, name: "qqq_1", ns: "get-containers-id-pages-id-api.bookstores", background: true }
+[33mbingo_1           |[0m 2018-08-02T13:27:23.360+0000 I INDEX    [conn2] build index done.  scanned 0 total records. 0 secs
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - undercover created. Id: 5b6306bbb00e0c001e05ef43
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/globs [32m200 [0m0.418 ms - 92[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - daemons undercover created: id "8661261"
+[33mbingo_1           |[0m 2018-08-02T13:27:23.374+0000 I INDEX    [conn2] build index on: get-containers-id-pages-id-api.bookstores properties: { v: 2, unique: true, key: { undercover_id: 1, qqq: 1 }, name: "undercover_id_1_qqq_1", ns: "get-containers-id-pages-id-api.bookstores", background: true }
+[33mbingo_1           |[0m 2018-08-02T13:27:23.374+0000 I INDEX    [conn2] build index done.  scanned 0 total records. 0 secs
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/gnext [32m200 [0m0.406 ms - 212[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob gnext created with name "non-existing-nice-animal"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/droppables [32m200 [0m0.449 ms - 243[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob droppable created with name "quickyabc"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/selectable-mistery [32m200 [0m0.300 ms - 256[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob antenna method created with name "dropss"
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 43 milliseconds with status 201
+[32mcontainers-api_1    |[0m info: XXX_AB get-containers-id-pages-id-api - Received POST /api/containers/5b6306bbb00e0c001e05ef43/pages request
+[32mcontainers-api_1    |[0m info: XXX_AB get-containers-id-pages-id-api - Y-Header-VZ for POST /api/containers/5b6306bbb00e0c001e05ef43/pages request: get-containers-id-pages-id-api
+[36mexternal-globs_1  |[0m [0mGET /daemons-api-url/globs/8661261 [32m200 [0m0.226 ms - 65[0m
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/globs/8661261/pages [32m200 [0m0.351 ms - 182[0m
+[32mcontainers-api_1    |[0m info: XXX_AB get-containers-id-pages-id-api - Completed in 9 milliseconds with status 200
+[35msut_1             |[0m     for a non daemons type undercover
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received POST /api/containers request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for POST /api/containers request: get-containers-id-pages-id-api
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/test/glob [32m200 [0m1.775 ms - 2[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - undercover created. Id: 5b6306bbb00e0c001e05ef44
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/globs [32m200 [0m0.382 ms - 92[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - daemons undercover created: id "8195957"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/gnext [32m200 [0m0.318 ms - 211[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob gnext created with name "non-existing-nice-animal"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/droppables [32m200 [0m0.409 ms - 243[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob droppable created with name "quickyabc"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/selectable-mistery [32m200 [0m0.308 ms - 256[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob antenna method created with name "dropss"
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 21 milliseconds with status 201
+[32mcontainers-api_1    |[0m info: XXX_AB get-containers-id-pages-id-api - Received GET /api/containers/5b6306bbb00e0c001e05ef44/pages/1807493 request
+[32mcontainers-api_1    |[0m info: XXX_AB get-containers-id-pages-id-api - Y-Header-VZ for GET /api/containers/5b6306bbb00e0c001e05ef44/pages/1807493 request: get-containers-id-pages-id-api
+[32mcontainers-api_1    |[0m info: XXX_AB get-containers-id-pages-id-api - Completed in 3 milliseconds with status 404
+[35msut_1             |[0m       ✓ should respond 404 Not Found
+[35msut_1             |[0m     for a daemons type undercover
+[32mcontainers-api_1    |[0m info: XXX_AB get-containers-id-pages-id-api - Received GET /api/containers/5b6306bbb00e0c001e05ef43/pages/1807493 request
+[32mcontainers-api_1    |[0m info: XXX_AB get-containers-id-pages-id-api - Y-Header-VZ for GET /api/containers/5b6306bbb00e0c001e05ef43/pages/1807493 request: get-containers-id-pages-id-api
+[36mexternal-globs_1  |[0m [0mGET /daemons-api-url/globs/8661261 [32m200 [0m0.243 ms - 65[0m
+[36mexternal-globs_1  |[0m [0mGET /daemons-api-url/globs/8661261/pages/1807493 [32m200 [0m0.396 ms - 182[0m
+[32mcontainers-api_1    |[0m info: XXX_AB get-containers-id-pages-id-api - Completed in 8 milliseconds with status 200
+[35msut_1             |[0m       ✓ should respond 200 Ok
+[32mcontainers-api_1    |[0m info: XXX_AB get-containers-id-pages-id-api - Received GET /api/containers/5b6306bbb00e0c001e05ef43/pages/1807493 request
+[32mcontainers-api_1    |[0m info: XXX_AB get-containers-id-pages-id-api - Y-Header-VZ for GET /api/containers/5b6306bbb00e0c001e05ef43/pages/1807493 request: get-containers-id-pages-id-api
+[36mexternal-globs_1  |[0m [0mGET /daemons-api-url/globs/8661261 [32m200 [0m0.277 ms - 65[0m
+[36mexternal-globs_1  |[0m [0mGET /daemons-api-url/globs/8661261/pages/1807493 [32m200 [0m0.216 ms - 182[0m
+[32mcontainers-api_1    |[0m info: XXX_AB get-containers-id-pages-id-api - Completed in 13 milliseconds with status 200
+[35msut_1             |[0m       ✓ should respond with an entity object
+[35msut_1             |[0m 
+[35msut_1             |[0m   GET /containers/:id/pages
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received POST /api/containers request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for POST /api/containers request: get-containers-id-pages-api
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/test/glob [32m200 [0m0.467 ms - 2[0m
+[33mbingo_1           |[0m 2018-08-02T13:27:23.478+0000 I INDEX    [conn3] build index on: get-containers-id-pages-api.bookstores properties: { v: 2, key: { qqq: 1 }, name: "qqq_1", ns: "get-containers-id-pages-api.bookstores", background: true }
+[33mbingo_1           |[0m 2018-08-02T13:27:23.479+0000 I INDEX    [conn3] build index done.  scanned 0 total records. 0 secs
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - undercover created. Id: 5b6306bbb00e0c001e05ef45
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/globs [32m200 [0m0.532 ms - 92[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - daemons undercover created: id "5422219"
+[33mbingo_1           |[0m 2018-08-02T13:27:23.492+0000 I INDEX    [conn3] build index on: get-containers-id-pages-api.bookstores properties: { v: 2, unique: true, key: { undercover_id: 1, qqq: 1 }, name: "undercover_id_1_qqq_1", ns: "get-containers-id-pages-api.bookstores", background: true }
+[33mbingo_1           |[0m 2018-08-02T13:27:23.493+0000 I INDEX    [conn3] build index done.  scanned 0 total records. 0 secs
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/gnext [32m200 [0m0.341 ms - 210[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob gnext created with name "non-existing-nice-animal"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/droppables [32m200 [0m0.398 ms - 243[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob droppable created with name "quickyabc"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/selectable-mistery [32m200 [0m0.388 ms - 256[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob antenna method created with name "dropss"
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 40 milliseconds with status 201
+[32mcontainers-api_1    |[0m info: XXX_AB get-containers-id-pages-api - Received POST /api/containers/5b6306bbb00e0c001e05ef45/pages request
+[32mcontainers-api_1    |[0m info: XXX_AB get-containers-id-pages-api - Y-Header-VZ for POST /api/containers/5b6306bbb00e0c001e05ef45/pages request: get-containers-id-pages-api
+[36mexternal-globs_1  |[0m [0mGET /daemons-api-url/globs/5422219 [32m200 [0m0.245 ms - 65[0m
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/globs/5422219/pages [32m200 [0m0.355 ms - 182[0m
+[32mcontainers-api_1    |[0m info: XXX_AB get-containers-id-pages-api - Completed in 9 milliseconds with status 200
+[32mcontainers-api_1    |[0m info: XXX_AB get-containers-id-pages-api - Received POST /api/containers/5b6306bbb00e0c001e05ef45/pages request
+[32mcontainers-api_1    |[0m info: XXX_AB get-containers-id-pages-api - Y-Header-VZ for POST /api/containers/5b6306bbb00e0c001e05ef45/pages request: get-containers-id-pages-api
+[36mexternal-globs_1  |[0m [0mGET /daemons-api-url/globs/5422219 [32m200 [0m0.234 ms - 65[0m
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/globs/5422219/pages [32m200 [0m0.368 ms - 182[0m
+[32mcontainers-api_1    |[0m info: XXX_AB get-containers-id-pages-api - Completed in 8 milliseconds with status 200
+[35msut_1             |[0m     for a non daemons type undercover
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received POST /api/containers request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for POST /api/containers request: get-containers-id-pages-api
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/test/glob [32m200 [0m0.368 ms - 2[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - undercover created. Id: 5b6306bbb00e0c001e05ef46
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/globs [32m200 [0m0.371 ms - 92[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - daemons undercover created: id "6971746"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/gnext [32m200 [0m0.318 ms - 210[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob gnext created with name "non-existing-nice-animal"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/droppables [32m200 [0m0.381 ms - 243[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob droppable created with name "quickyabc"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/selectable-mistery [32m200 [0m0.359 ms - 256[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob antenna method created with name "dropss"
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 20 milliseconds with status 201
+[32mcontainers-api_1    |[0m info: XXX_AB get-containers-id-pages-api - Received GET /api/containers/5b6306bbb00e0c001e05ef46/pages request
+[32mcontainers-api_1    |[0m info: XXX_AB get-containers-id-pages-api - Y-Header-VZ for GET /api/containers/5b6306bbb00e0c001e05ef46/pages request: get-containers-id-pages-api
+[32mcontainers-api_1    |[0m info: XXX_AB get-containers-id-pages-api - Completed in 2 milliseconds with status 404
+[35msut_1             |[0m       ✓ should respond 404 Not Found
+[35msut_1             |[0m     for a daemons type undercover
+[32mcontainers-api_1    |[0m info: XXX_AB get-containers-id-pages-api - Received GET /api/containers/5b6306bbb00e0c001e05ef45/pages request
+[32mcontainers-api_1    |[0m info: XXX_AB get-containers-id-pages-api - Y-Header-VZ for GET /api/containers/5b6306bbb00e0c001e05ef45/pages request: get-containers-id-pages-api
+[36mexternal-globs_1  |[0m [0mGET /daemons-api-url/globs/5422219 [32m200 [0m0.236 ms - 65[0m
+[36mexternal-globs_1  |[0m [0mGET /daemons-api-url/globs/5422219/pages [32m200 [0m0.325 ms - 550[0m
+[32mcontainers-api_1    |[0m info: XXX_AB get-containers-id-pages-api - Completed in 8 milliseconds with status 200
+[35msut_1             |[0m       ✓ should respond 200 Ok
+[32mcontainers-api_1    |[0m info: XXX_AB get-containers-id-pages-api - Received GET /api/containers/5b6306bbb00e0c001e05ef45/pages request
+[32mcontainers-api_1    |[0m info: XXX_AB get-containers-id-pages-api - Y-Header-VZ for GET /api/containers/5b6306bbb00e0c001e05ef45/pages request: get-containers-id-pages-api
+[36mexternal-globs_1  |[0m [0mGET /daemons-api-url/globs/5422219 [32m200 [0m0.232 ms - 65[0m
+[36mexternal-globs_1  |[0m [0mGET /daemons-api-url/globs/5422219/pages [32m200 [0m0.198 ms - 550[0m
+[32mcontainers-api_1    |[0m info: XXX_AB get-containers-id-pages-api - Completed in 7 milliseconds with status 200
+[35msut_1             |[0m       ✓ should respond with an object array
+[35msut_1             |[0m 
+[35msut_1             |[0m   GET /containers/:id/haves/:id
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received POST /api/containers request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for POST /api/containers request: get-containers-id-haves-id-api
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/test/glob [32m200 [0m0.497 ms - 2[0m
+[33mbingo_1           |[0m 2018-08-02T13:27:23.612+0000 I INDEX    [conn3] build index on: get-containers-id-haves-id-api.bookstores properties: { v: 2, key: { qqq: 1 }, name: "qqq_1", ns: "get-containers-id-haves-id-api.bookstores", background: true }
+[33mbingo_1           |[0m 2018-08-02T13:27:23.613+0000 I INDEX    [conn3] build index done.  scanned 0 total records. 0 secs
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - undercover created. Id: 5b6306bbb00e0c001e05ef47
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/globs [32m200 [0m0.501 ms - 92[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - daemons undercover created: id "8781856"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/gnext [32m200 [0m0.420 ms - 213[0m
+[33mbingo_1           |[0m 2018-08-02T13:27:23.632+0000 I INDEX    [conn3] build index on: get-containers-id-haves-id-api.bookstores properties: { v: 2, unique: true, key: { undercover_id: 1, qqq: 1 }, name: "undercover_id_1_qqq_1", ns: "get-containers-id-haves-id-api.bookstores", background: true }
+[33mbingo_1           |[0m 2018-08-02T13:27:23.632+0000 I INDEX    [conn3] build index done.  scanned 0 total records. 0 secs
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob gnext created with name "non-existing-nice-animal"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/droppables [32m200 [0m0.446 ms - 243[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob droppable created with name "quickyabc"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/selectable-mistery [32m200 [0m0.411 ms - 256[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob antenna method created with name "dropss"
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 54 milliseconds with status 201
+[32mcontainers-api_1    |[0m info: XXX_AB get-containers-id-haves-id-api - Received POST /api/containers/5b6306bbb00e0c001e05ef47/haves request
+[32mcontainers-api_1    |[0m info: XXX_AB get-containers-id-haves-id-api - Y-Header-VZ for POST /api/containers/5b6306bbb00e0c001e05ef47/haves request: get-containers-id-haves-id-api
+[36mexternal-globs_1  |[0m [0mGET /daemons-api-url/globs/8781856 [32m200 [0m0.333 ms - 65[0m
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/globs/8781856/haves [32m200 [0m0.425 ms - 182[0m
+[32mcontainers-api_1    |[0m info: XXX_AB get-containers-id-haves-id-api - Completed in 11 milliseconds with status 200
+[35msut_1             |[0m     for a non daemons type undercover
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received POST /api/containers request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for POST /api/containers request: get-containers-id-haves-id-api
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/test/glob [32m200 [0m0.381 ms - 2[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - undercover created. Id: 5b6306bbb00e0c001e05ef48
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/globs [32m200 [0m0.438 ms - 91[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - daemons undercover created: id "2930209"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/gnext [32m200 [0m0.396 ms - 213[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob gnext created with name "non-existing-nice-animal"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/droppables [32m200 [0m0.370 ms - 243[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob droppable created with name "quickyabc"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/selectable-mistery [32m200 [0m0.395 ms - 256[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob antenna method created with name "dropss"
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 22 milliseconds with status 201
+[32mcontainers-api_1    |[0m info: XXX_AB get-containers-id-haves-id-api - Received GET /api/containers/5b6306bbb00e0c001e05ef48/haves/4515392 request
+[32mcontainers-api_1    |[0m info: XXX_AB get-containers-id-haves-id-api - Y-Header-VZ for GET /api/containers/5b6306bbb00e0c001e05ef48/haves/4515392 request: get-containers-id-haves-id-api
+[32mcontainers-api_1    |[0m info: XXX_AB get-containers-id-haves-id-api - Completed in 4 milliseconds with status 404
+[35msut_1             |[0m       ✓ should respond 404 Not Found
+[35msut_1             |[0m     for a daemons type undercover
+[32mcontainers-api_1    |[0m info: XXX_AB get-containers-id-haves-id-api - Received GET /api/containers/5b6306bbb00e0c001e05ef47/haves/4515392 request
+[32mcontainers-api_1    |[0m info: XXX_AB get-containers-id-haves-id-api - Y-Header-VZ for GET /api/containers/5b6306bbb00e0c001e05ef47/haves/4515392 request: get-containers-id-haves-id-api
+[36mexternal-globs_1  |[0m [0mGET /daemons-api-url/globs/8781856 [32m200 [0m0.255 ms - 65[0m
+[36mexternal-globs_1  |[0m [0mGET /daemons-api-url/globs/8781856/haves/4515392 [32m200 [0m0.253 ms - 182[0m
+[32mcontainers-api_1    |[0m info: XXX_AB get-containers-id-haves-id-api - Completed in 11 milliseconds with status 200
+[35msut_1             |[0m       ✓ should respond 200 Ok
+[32mcontainers-api_1    |[0m info: XXX_AB get-containers-id-haves-id-api - Received GET /api/containers/5b6306bbb00e0c001e05ef47/haves/4515392 request
+[32mcontainers-api_1    |[0m info: XXX_AB get-containers-id-haves-id-api - Y-Header-VZ for GET /api/containers/5b6306bbb00e0c001e05ef47/haves/4515392 request: get-containers-id-haves-id-api
+[36mexternal-globs_1  |[0m [0mGET /daemons-api-url/globs/8781856 [32m200 [0m0.234 ms - 65[0m
+[36mexternal-globs_1  |[0m [0mGET /daemons-api-url/globs/8781856/haves/4515392 [32m200 [0m0.209 ms - 182[0m
+[32mcontainers-api_1    |[0m info: XXX_AB get-containers-id-haves-id-api - Completed in 8 milliseconds with status 200
+[35msut_1             |[0m       ✓ should respond with an entity object
+[35msut_1             |[0m 
+[35msut_1             |[0m   GET /containers/:id/haves
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received POST /api/containers request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for POST /api/containers request: get-containers-id-haves-api
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/test/glob [32m200 [0m0.557 ms - 2[0m
+[33mbingo_1           |[0m 2018-08-02T13:27:23.734+0000 I INDEX    [conn1] build index on: get-containers-id-haves-api.bookstores properties: { v: 2, key: { qqq: 1 }, name: "qqq_1", ns: "get-containers-id-haves-api.bookstores", background: true }
+[33mbingo_1           |[0m 2018-08-02T13:27:23.734+0000 I INDEX    [conn1] build index done.  scanned 0 total records. 0 secs
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - undercover created. Id: 5b6306bbb00e0c001e05ef49
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - daemons undercover created: id "3200544"
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/globs [32m200 [0m0.674 ms - 92[0m
+[33mbingo_1           |[0m 2018-08-02T13:27:23.747+0000 I INDEX    [conn1] build index on: get-containers-id-haves-api.bookstores properties: { v: 2, unique: true, key: { undercover_id: 1, qqq: 1 }, name: "undercover_id_1_qqq_1", ns: "get-containers-id-haves-api.bookstores", background: true }
+[33mbingo_1           |[0m 2018-08-02T13:27:23.748+0000 I INDEX    [conn1] build index done.  scanned 0 total records. 0 secs
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/gnext [32m200 [0m0.334 ms - 210[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob gnext created with name "non-existing-nice-animal"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/droppables [32m200 [0m0.427 ms - 243[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob droppable created with name "quickyabc"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/selectable-mistery [32m200 [0m0.305 ms - 256[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob antenna method created with name "dropss"
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 38 milliseconds with status 201
+[32mcontainers-api_1    |[0m info: XXX_AB get-containers-id-haves-api - Received POST /api/containers/5b6306bbb00e0c001e05ef49/haves request
+[32mcontainers-api_1    |[0m info: XXX_AB get-containers-id-haves-api - Y-Header-VZ for POST /api/containers/5b6306bbb00e0c001e05ef49/haves request: get-containers-id-haves-api
+[36mexternal-globs_1  |[0m [0mGET /daemons-api-url/globs/3200544 [32m200 [0m0.225 ms - 65[0m
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/globs/3200544/haves [32m200 [0m0.347 ms - 182[0m
+[32mcontainers-api_1    |[0m info: XXX_AB get-containers-id-haves-api - Completed in 9 milliseconds with status 200
+[32mcontainers-api_1    |[0m info: XXX_AB get-containers-id-haves-api - Received POST /api/containers/5b6306bbb00e0c001e05ef49/haves request
+[32mcontainers-api_1    |[0m info: XXX_AB get-containers-id-haves-api - Y-Header-VZ for POST /api/containers/5b6306bbb00e0c001e05ef49/haves request: get-containers-id-haves-api
+[36mexternal-globs_1  |[0m [0mGET /daemons-api-url/globs/3200544 [32m200 [0m0.227 ms - 65[0m
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/globs/3200544/haves [32m200 [0m0.370 ms - 182[0m
+[32mcontainers-api_1    |[0m info: XXX_AB get-containers-id-haves-api - Completed in 9 milliseconds with status 200
+[35msut_1             |[0m     for a non daemons type undercover
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received POST /api/containers request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for POST /api/containers request: get-containers-id-haves-api
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/test/glob [32m200 [0m0.350 ms - 2[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - undercover created. Id: 5b6306bbb00e0c001e05ef4a
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/globs [32m200 [0m0.454 ms - 92[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - daemons undercover created: id "2112091"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/gnext [32m200 [0m0.312 ms - 210[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob gnext created with name "non-existing-nice-animal"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/droppables [32m200 [0m0.426 ms - 243[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob droppable created with name "quickyabc"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/selectable-mistery [32m200 [0m0.917 ms - 256[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob antenna method created with name "dropss"
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 19 milliseconds with status 201
+[32mcontainers-api_1    |[0m info: XXX_AB get-containers-id-haves-api - Received GET /api/containers/5b6306bbb00e0c001e05ef4a/haves request
+[32mcontainers-api_1    |[0m info: XXX_AB get-containers-id-haves-api - Y-Header-VZ for GET /api/containers/5b6306bbb00e0c001e05ef4a/haves request: get-containers-id-haves-api
+[32mcontainers-api_1    |[0m info: XXX_AB get-containers-id-haves-api - Completed in 3 milliseconds with status 404
+[35msut_1             |[0m       ✓ should respond 404 Not Found
+[35msut_1             |[0m     for a daemons type undercover
+[32mcontainers-api_1    |[0m info: XXX_AB get-containers-id-haves-api - Received GET /api/containers/5b6306bbb00e0c001e05ef49/haves request
+[32mcontainers-api_1    |[0m info: XXX_AB get-containers-id-haves-api - Y-Header-VZ for GET /api/containers/5b6306bbb00e0c001e05ef49/haves request: get-containers-id-haves-api
+[36mexternal-globs_1  |[0m [0mGET /daemons-api-url/globs/3200544 [32m200 [0m0.483 ms - 63[0m
+[36mexternal-globs_1  |[0m [0mGET /daemons-api-url/globs/3200544/haves [32m200 [0m0.438 ms - 550[0m
+[32mcontainers-api_1    |[0m info: XXX_AB get-containers-id-haves-api - Completed in 12 milliseconds with status 200
+[35msut_1             |[0m       ✓ should respond 200 Ok
+[32mcontainers-api_1    |[0m info: XXX_AB get-containers-id-haves-api - Received GET /api/containers/5b6306bbb00e0c001e05ef49/haves request
+[32mcontainers-api_1    |[0m info: XXX_AB get-containers-id-haves-api - Y-Header-VZ for GET /api/containers/5b6306bbb00e0c001e05ef49/haves request: get-containers-id-haves-api
+[36mexternal-globs_1  |[0m [0mGET /daemons-api-url/globs/3200544 [32m200 [0m0.364 ms - 65[0m
+[36mexternal-globs_1  |[0m [0mGET /daemons-api-url/globs/3200544/haves [32m200 [0m0.239 ms - 550[0m
+[32mcontainers-api_1    |[0m info: XXX_AB get-containers-id-haves-api - Completed in 9 milliseconds with status 200
+[35msut_1             |[0m       ✓ should respond with an object array
+[35msut_1             |[0m 
+[35msut_1             |[0m   GET /containers/:id/blinbling-rates/:id
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received POST /api/containers request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for POST /api/containers request: get-containers-id-blinbling-rates-id-api
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/test/glob [32m200 [0m0.865 ms - 2[0m
+[33mbingo_1           |[0m 2018-08-02T13:27:23.865+0000 I INDEX    [conn1] build index on: get-containers-id-blinbling-rates-id-api.bookstores properties: { v: 2, key: { qqq: 1 }, name: "qqq_1", ns: "get-containers-id-blinbling-rates-id-api.bookstores", background: true }
+[33mbingo_1           |[0m 2018-08-02T13:27:23.865+0000 I INDEX    [conn1] build index done.  scanned 0 total records. 0 secs
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - undercover created. Id: 5b6306bbb00e0c001e05ef4b
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/globs [32m200 [0m0.588 ms - 92[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - daemons undercover created: id "7309177"
+[33mbingo_1           |[0m 2018-08-02T13:27:23.879+0000 I INDEX    [conn1] build index on: get-containers-id-blinbling-rates-id-api.bookstores properties: { v: 2, unique: true, key: { undercover_id: 1, qqq: 1 }, name: "undercover_id_1_qqq_1", ns: "get-containers-id-blinbling-rates-id-api.bookstores", background: true }
+[33mbingo_1           |[0m 2018-08-02T13:27:23.879+0000 I INDEX    [conn1] build index done.  scanned 0 total records. 0 secs
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/gnext [32m200 [0m0.415 ms - 221[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob gnext created with name "non-existing-nice-animal"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/droppables [32m200 [0m0.390 ms - 243[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob droppable created with name "quickyabc"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/selectable-mistery [32m200 [0m0.377 ms - 256[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob antenna method created with name "dropss"
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 39 milliseconds with status 201
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received POST /api/containers/5b6306bbb00e0c001e05ef4b/blinbling-rates request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for POST /api/containers/5b6306bbb00e0c001e05ef4b/blinbling-rates request: get-containers-id-blinbling-rates-id-api
+[36mexternal-globs_1  |[0m [0mGET /daemons-api-url/globs/7309177 [32m200 [0m0.279 ms - 65[0m
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/droppables [32m200 [0m0.589 ms - 226[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 15 milliseconds with status 200
+[35msut_1             |[0m     for a non daemons type undercover
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received POST /api/containers request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for POST /api/containers request: get-containers-id-blinbling-rates-id-api
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/test/glob [32m200 [0m0.386 ms - 2[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - undercover created. Id: 5b6306bbb00e0c001e05ef4c
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/globs [32m200 [0m0.328 ms - 92[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - daemons undercover created: id "5155254"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/gnext [32m200 [0m0.408 ms - 222[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob gnext created with name "non-existing-nice-animal"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/droppables [32m200 [0m0.377 ms - 243[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob droppable created with name "quickyabc"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/selectable-mistery [32m200 [0m0.480 ms - 256[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob antenna method created with name "dropss"
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 19 milliseconds with status 201
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received GET /api/containers/5b6306bbb00e0c001e05ef4c/blinbling-rates/522022 request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for GET /api/containers/5b6306bbb00e0c001e05ef4c/blinbling-rates/522022 request: get-containers-id-blinbling-rates-id-api
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 3 milliseconds with status 404
+[35msut_1             |[0m       ✓ should respond 404 Not Found
+[35msut_1             |[0m     for a daemons type undercover
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received GET /api/containers/5b6306bbb00e0c001e05ef4b/blinbling-rates/522022 request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for GET /api/containers/5b6306bbb00e0c001e05ef4b/blinbling-rates/522022 request: get-containers-id-blinbling-rates-id-api
+[36mexternal-globs_1  |[0m [0mGET /daemons-api-url/globs/7309177 [32m200 [0m0.232 ms - 65[0m
+[36mexternal-globs_1  |[0m [0mGET /solitary-url/droppables/522022 [32m200 [0m0.217 ms - 226[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 10 milliseconds with status 200
+[35msut_1             |[0m       ✓ should respond 200 Ok
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received GET /api/containers/5b6306bbb00e0c001e05ef4b/blinbling-rates/522022 request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for GET /api/containers/5b6306bbb00e0c001e05ef4b/blinbling-rates/522022 request: get-containers-id-blinbling-rates-id-api
+[36mexternal-globs_1  |[0m [0mGET /daemons-api-url/globs/7309177 [32m200 [0m0.240 ms - 65[0m
+[36mexternal-globs_1  |[0m [0mGET /solitary-url/droppables/522022 [32m200 [0m0.185 ms - 226[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 12 milliseconds with status 200
+[35msut_1             |[0m       ✓ should respond with an object
+[35msut_1             |[0m     when mister blob responds with an error
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received GET /api/containers/5b6306bbb00e0c001e05ef4b/blinbling-rates/error request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for GET /api/containers/5b6306bbb00e0c001e05ef4b/blinbling-rates/error request: get-containers-id-blinbling-rates-id-api
+[36mexternal-globs_1  |[0m [0mGET /daemons-api-url/globs/7309177 [32m200 [0m0.276 ms - 65[0m
+[36mexternal-globs_1  |[0m [0mGET /solitary-url/droppables/error [31m500 [0m0.303 ms - 18[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 9 milliseconds with status 500
+[35msut_1             |[0m       ✓ should forward the error
+[35msut_1             |[0m 
+[35msut_1             |[0m   GET /containers/:id/blinbling-rates
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received POST /api/containers request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for POST /api/containers request: get-containers-id-blinbling-rates-api
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/test/glob [32m200 [0m0.510 ms - 2[0m
+[33mbingo_1           |[0m 2018-08-02T13:27:24.002+0000 I INDEX    [conn1] build index on: get-containers-id-blinbling-rates-api.bookstores properties: { v: 2, key: { qqq: 1 }, name: "qqq_1", ns: "get-containers-id-blinbling-rates-api.bookstores", background: true }
+[33mbingo_1           |[0m 2018-08-02T13:27:24.002+0000 I INDEX    [conn1] build index done.  scanned 0 total records. 0 secs
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - undercover created. Id: 5b6306bcb00e0c001e05ef4d
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/globs [32m200 [0m0.713 ms - 92[0m
+[33mbingo_1           |[0m 2018-08-02T13:27:24.015+0000 I INDEX    [conn1] build index on: get-containers-id-blinbling-rates-api.bookstores properties: { v: 2, unique: true, key: { undercover_id: 1, qqq: 1 }, name: "undercover_id_1_qqq_1", ns: "get-containers-id-blinbling-rates-api.bookstores", background: true }
+[33mbingo_1           |[0m 2018-08-02T13:27:24.015+0000 I INDEX    [conn1] build index done.  scanned 0 total records. 0 secs
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - daemons undercover created: id "5740581"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/gnext [32m200 [0m0.352 ms - 219[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob gnext created with name "non-existing-nice-animal"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/droppables [32m200 [0m0.347 ms - 243[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob droppable created with name "quickyabc"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/selectable-mistery [32m200 [0m0.840 ms - 256[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob antenna method created with name "dropss"
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 43 milliseconds with status 201
+[35msut_1             |[0m     for a non daemons type undercover
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received POST /api/containers request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for POST /api/containers request: get-containers-id-blinbling-rates-api
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/test/glob [32m200 [0m0.371 ms - 2[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - undercover created. Id: 5b6306bcb00e0c001e05ef4e
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/globs [32m200 [0m0.387 ms - 92[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - daemons undercover created: id "3663039"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/gnext [32m200 [0m0.315 ms - 219[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob gnext created with name "non-existing-nice-animal"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/droppables [32m200 [0m0.335 ms - 243[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob droppable created with name "quickyabc"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/selectable-mistery [32m200 [0m0.354 ms - 256[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob antenna method created with name "dropss"
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 22 milliseconds with status 201
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received GET /api/containers/5b6306bcb00e0c001e05ef4e/blinbling-rates request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for GET /api/containers/5b6306bcb00e0c001e05ef4e/blinbling-rates request: get-containers-id-blinbling-rates-api
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 3 milliseconds with status 404
+[35msut_1             |[0m       ✓ should respond 404 Not Found
+[35msut_1             |[0m     for a daemons type undercover
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received GET /api/containers/5b6306bcb00e0c001e05ef4d/blinbling-rates request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for GET /api/containers/5b6306bcb00e0c001e05ef4d/blinbling-rates request: get-containers-id-blinbling-rates-api
+[36mexternal-globs_1  |[0m [0mGET /daemons-api-url/globs/5740581 [32m200 [0m0.244 ms - 65[0m
+[36mexternal-globs_1  |[0m [0mGET /solitary-url/droppables [32m200 [0m0.393 ms - 5573[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 9 milliseconds with status 200
+[35msut_1             |[0m       ✓ should respond 200 Ok
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received GET /api/containers/5b6306bcb00e0c001e05ef4d/blinbling-rates request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for GET /api/containers/5b6306bcb00e0c001e05ef4d/blinbling-rates request: get-containers-id-blinbling-rates-api
+[36mexternal-globs_1  |[0m [0mGET /daemons-api-url/globs/5740581 [32m200 [0m0.221 ms - 65[0m
+[36mexternal-globs_1  |[0m [0mGET /solitary-url/droppables [32m200 [0m0.290 ms - 5573[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 8 milliseconds with status 200
+[35msut_1             |[0m       ✓ should respond with an array of object
+[35msut_1             |[0m 
+[35msut_1             |[0m   GET /containers/:id
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received POST /api/containers request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for POST /api/containers request: get-containers-id-api
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/test/glob [32m200 [0m0.370 ms - 2[0m
+[33mbingo_1           |[0m 2018-08-02T13:27:24.102+0000 I INDEX    [conn3] build index on: get-containers-id-api.bookstores properties: { v: 2, key: { qqq: 1 }, name: "qqq_1", ns: "get-containers-id-api.bookstores", background: true }
+[33mbingo_1           |[0m 2018-08-02T13:27:24.102+0000 I INDEX    [conn3] build index done.  scanned 0 total records. 0 secs
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - undercover created. Id: 5b6306bcb00e0c001e05ef4f
+[33mbingo_1           |[0m 2018-08-02T13:27:24.114+0000 I INDEX    [conn2] build index on: get-containers-id-api.bookstores properties: { v: 2, unique: true, key: { undercover_id: 1, qqq: 1 }, name: "undercover_id_1_qqq_1", ns: "get-containers-id-api.bookstores", background: true }
+[33mbingo_1           |[0m 2018-08-02T13:27:24.115+0000 I INDEX    [conn2] build index done.  scanned 0 total records. 0 secs
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/globs [32m200 [0m0.451 ms - 230[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - daemons undercover created: id "9938021"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/gnext [32m200 [0m0.360 ms - 198[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob gnext created with name "non-existing-entity"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/droppables [32m200 [0m0.311 ms - 243[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob droppable created with name "quickyabc"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/selectable-mistery [32m200 [0m0.296 ms - 256[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob antenna method created with name "dropss"
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 42 milliseconds with status 201
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received GET /api/containers/5b6306bcb00e0c001e05ef4f request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for GET /api/containers/5b6306bcb00e0c001e05ef4f request: get-containers-id-api
+[36mexternal-globs_1  |[0m [0mGET /daemons-api-url/globs/9938021 [32m200 [0m0.235 ms - 65[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 6 milliseconds with status 200
+[35msut_1             |[0m     ✓ should respond 200 Ok
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received GET /api/containers/5b6306bcb00e0c001e05ef4f request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for GET /api/containers/5b6306bcb00e0c001e05ef4f request: get-containers-id-api
+[36mexternal-globs_1  |[0m [0mGET /daemons-api-url/globs/9938021 [32m200 [0m0.316 ms - 65[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 7 milliseconds with status 200
+[35msut_1             |[0m     ✓ should respond with a undercover
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received GET /api/containers/5b6306bcb00e0c001e05ef4f request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for GET /api/containers/5b6306bcb00e0c001e05ef4f request: get-containers-id-api
+[36mexternal-globs_1  |[0m [0mGET /daemons-api-url/globs/9938021 [32m200 [0m0.319 ms - 65[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 5 milliseconds with status 200
+[35msut_1             |[0m     ✓ response should include daemons data
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received GET /api/containers/5b6306bcb00e0c001e05ef4f request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for GET /api/containers/5b6306bcb00e0c001e05ef4f request: get-containers-id-api
+[36mexternal-globs_1  |[0m [0mGET /daemons-api-url/globs/9938021 [32m200 [0m0.291 ms - 65[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 5 milliseconds with status 200
+[35msut_1             |[0m     ✓ response should not include data.unique_cart_id
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received GET /api/containers/5b6306bcb00e0c001e05ef4f request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for GET /api/containers/5b6306bcb00e0c001e05ef4f request: get-containers-id-api
+[36mexternal-globs_1  |[0m [0mGET /daemons-api-url/globs/9938021 [32m200 [0m0.312 ms - 65[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 5 milliseconds with status 200
+[35msut_1             |[0m     ✓ response should not include data.daemons_id
+[35msut_1             |[0m     without Y-Header-VZ
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received GET /api/containers/5b6306bcb00e0c001e05ef4f request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for GET /api/containers/5b6306bcb00e0c001e05ef4f request: MISSING
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 1 milliseconds with status 401
+[35msut_1             |[0m       ✓ should respond 401 Unauthorized
+[35msut_1             |[0m 
+[35msut_1             |[0m   GET /containers-types
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received GET /api/containers-types request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for GET /api/containers-types request: get-containers-types
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 2 milliseconds with status 200
+[35msut_1             |[0m     ✓ should respond 200 Ok
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received GET /api/containers-types request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for GET /api/containers-types request: get-containers-types
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 1 milliseconds with status 200
+[35msut_1             |[0m     ✓ should respond with JSON array
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received GET /api/containers-types request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for GET /api/containers-types request: get-containers-types
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 1 milliseconds with status 200
+[35msut_1             |[0m     ✓ response should only contain "daemons" element
+[35msut_1             |[0m     without Y-Header-VZ
+[33mbingo_1           |[0m 2018-08-02T13:27:24.208+0000 I INDEX    [conn1] build index on: get-containers-types.bookstores properties: { v: 2, key: { qqq: 1 }, name: "qqq_1", ns: "get-containers-types.bookstores", background: true }
+[33mbingo_1           |[0m 2018-08-02T13:27:24.208+0000 I INDEX    [conn1] build index done.  scanned 0 total records. 0 secs
+[33mbingo_1           |[0m 2018-08-02T13:27:24.214+0000 I INDEX    [conn3] build index on: get-containers-types.bookstores properties: { v: 2, unique: true, key: { undercover_id: 1, qqq: 1 }, name: "undercover_id_1_qqq_1", ns: "get-containers-types.bookstores", background: true }
+[33mbingo_1           |[0m 2018-08-02T13:27:24.214+0000 I INDEX    [conn3] build index done.  scanned 0 total records. 0 secs
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received GET /api/containers-types request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for GET /api/containers-types request: MISSING
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 2 milliseconds with status 401
+[35msut_1             |[0m       ✓ should respond 401 Unauthorized
+[35msut_1             |[0m 
+[35msut_1             |[0m   GET /containers
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received POST /api/containers request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for POST /api/containers request: get-containers-api
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/test/glob [32m200 [0m0.422 ms - 2[0m
+[33mbingo_1           |[0m 2018-08-02T13:27:24.247+0000 I INDEX    [conn2] build index on: get-containers-api.bookstores properties: { v: 2, key: { qqq: 1 }, name: "qqq_1", ns: "get-containers-api.bookstores", background: true }
+[33mbingo_1           |[0m 2018-08-02T13:27:24.248+0000 I INDEX    [conn2] build index done.  scanned 0 total records. 0 secs
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - undercover created. Id: 5b6306bcb00e0c001e05ef50
+[33mbingo_1           |[0m 2018-08-02T13:27:24.259+0000 I INDEX    [conn2] build index on: get-containers-api.bookstores properties: { v: 2, unique: true, key: { undercover_id: 1, qqq: 1 }, name: "undercover_id_1_qqq_1", ns: "get-containers-api.bookstores", background: true }
+[33mbingo_1           |[0m 2018-08-02T13:27:24.259+0000 I INDEX    [conn2] build index done.  scanned 0 total records. 0 secs
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/globs [32m200 [0m0.689 ms - 230[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - daemons undercover created: id "7980507"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/gnext [32m200 [0m0.373 ms - 195[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob gnext created with name "non-existing-entity"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/droppables [32m200 [0m0.377 ms - 242[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob droppable created with name "quickyabc"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/selectable-mistery [32m200 [0m0.340 ms - 256[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob antenna method created with name "dropss"
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 41 milliseconds with status 201
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received GET /api/containers request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for GET /api/containers request: get-containers-api
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 4 milliseconds with status 200
+[35msut_1             |[0m     ✓ should respond 200 Ok
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received GET /api/containers request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for GET /api/containers request: get-containers-api
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 3 milliseconds with status 200
+[35msut_1             |[0m     ✓ should respond with JSON array
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received GET /api/containers request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for GET /api/containers request: get-containers-api
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 3 milliseconds with status 200
+[35msut_1             |[0m     ✓ response items should not have "data" field
+[35msut_1             |[0m     without Y-Header-VZ
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received GET /api/containers request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for GET /api/containers request: MISSING
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 1 milliseconds with status 401
+[35msut_1             |[0m       ✓ should respond 401 Unauthorized
+[35msut_1             |[0m 
+[35msut_1             |[0m   GET /publish-status/:qqqs
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received POST /api/containers request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for POST /api/containers request: get-publish-status-qqq
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/test/glob [32m200 [0m0.457 ms - 2[0m
+[33mbingo_1           |[0m 2018-08-02T13:27:24.318+0000 I INDEX    [conn2] build index on: get-publish-status-qqq.bookstores properties: { v: 2, key: { qqq: 1 }, name: "qqq_1", ns: "get-publish-status-qqq.bookstores", background: true }
+[33mbingo_1           |[0m 2018-08-02T13:27:24.318+0000 I INDEX    [conn2] build index done.  scanned 0 total records. 0 secs
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - undercover created. Id: 5b6306bcb00e0c001e05ef51
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/globs [32m200 [0m0.905 ms - 92[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - daemons undercover created: id "2968599"
+[33mbingo_1           |[0m 2018-08-02T13:27:24.333+0000 I INDEX    [conn2] build index on: get-publish-status-qqq.bookstores properties: { v: 2, unique: true, key: { undercover_id: 1, qqq: 1 }, name: "undercover_id_1_qqq_1", ns: "get-publish-status-qqq.bookstores", background: true }
+[33mbingo_1           |[0m 2018-08-02T13:27:24.334+0000 I INDEX    [conn2] build index done.  scanned 0 total records. 0 secs
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/gnext [32m200 [0m0.361 ms - 207[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob gnext created with name "non-existing-nice-animal"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/droppables [32m200 [0m0.348 ms - 243[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob droppable created with name "quickyabc"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/selectable-mistery [32m200 [0m0.380 ms - 256[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob antenna method created with name "dropss"
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 42 milliseconds with status 201
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received POST /api/containers/5b6306bcb00e0c001e05ef51/qqqs request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for POST /api/containers/5b6306bcb00e0c001e05ef51/qqqs request: get-publish-status-qqq
+[36mexternal-globs_1  |[0m [0mGET /bookstore-get-by-qqq-url/have-containers-id-qqqs-api-bookstore [32m200 [0m0.270 ms - 1158[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Retrieving bookstore with qqq "have-containers-id-qqqs-api-bookstore" from http://external-globs/bookstore-get-by-qqq-url successfull
+[36mexternal-globs_1  |[0m [0mPUT /daemons-api-url/globs/2968599/bookstore/have-containers-id-qqqs-api-bookstore [32m200 [0m0.482 ms - 2[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Publishing bookstore "have-containers-id-qqqs-api-bookstore" to daemons "2968599". Success
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 13 milliseconds with status 200
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received POST /api/containers request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for POST /api/containers request: get-publish-status-qqq
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/test/glob [32m200 [0m0.429 ms - 2[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - undercover created. Id: 5b6306bcb00e0c001e05ef53
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/globs [32m200 [0m0.550 ms - 91[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - daemons undercover created: id "5680300"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/gnext [32m200 [0m0.354 ms - 207[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob gnext created with name "non-existing-nice-animal"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/droppables [32m200 [0m0.342 ms - 243[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob droppable created with name "quickyabc"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/selectable-mistery [32m200 [0m0.334 ms - 256[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob antenna method created with name "dropss"
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 20 milliseconds with status 201
+[35msut_1             |[0m     without Y-Header-VZ
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received GET /api/publish-status/have-containers-id-qqqs-api-bookstore request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for GET /api/publish-status/have-containers-id-qqqs-api-bookstore request: MISSING
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 1 milliseconds with status 401
+[35msut_1             |[0m       ✓ should respond 401 Unauthorized
+[35msut_1             |[0m     with a never published qqq
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received GET /api/publish-status/a-never-published-qqq request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for GET /api/publish-status/a-never-published-qqq request: get-publish-status-qqq
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 5 milliseconds with status 200
+[35msut_1             |[0m       ✓ should respond 200 Ok
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received GET /api/publish-status/a-never-published-qqq request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for GET /api/publish-status/a-never-published-qqq request: get-publish-status-qqq
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 3 milliseconds with status 200
+[35msut_1             |[0m       ✓ should have qqq_status not_published for each undercover
+[35msut_1             |[0m     with a published qqq
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received GET /api/publish-status/have-containers-id-qqqs-api-bookstore request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for GET /api/publish-status/have-containers-id-qqqs-api-bookstore request: get-publish-status-qqq
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 2 milliseconds with status 200
+[35msut_1             |[0m       ✓ should respond 200 Ok
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received GET /api/publish-status/have-containers-id-qqqs-api-bookstore request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for GET /api/publish-status/have-containers-id-qqqs-api-bookstore request: get-publish-status-qqq
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 2 milliseconds with status 200
+[35msut_1             |[0m       ✓ should have qqq_status published for target undercover
+[35msut_1             |[0m 
+[35msut_1             |[0m   PATCH /containers/:id/pages/:id
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received POST /api/containers request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for POST /api/containers request: patch-containers-id-pages-id-api
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/test/glob [32m200 [0m0.444 ms - 2[0m
+[33mbingo_1           |[0m 2018-08-02T13:27:24.435+0000 I INDEX    [conn2] build index on: patch-containers-id-pages-id-api.bookstores properties: { v: 2, key: { qqq: 1 }, name: "qqq_1", ns: "patch-containers-id-pages-id-api.bookstores", background: true }
+[33mbingo_1           |[0m 2018-08-02T13:27:24.441+0000 I INDEX    [conn2] build index done.  scanned 0 total records. 0 secs
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - undercover created. Id: 5b6306bcb00e0c001e05ef54
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/globs [32m200 [0m0.426 ms - 92[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - daemons undercover created: id "8752727"
+[33mbingo_1           |[0m 2018-08-02T13:27:24.450+0000 I INDEX    [conn2] build index on: patch-containers-id-pages-id-api.bookstores properties: { v: 2, unique: true, key: { undercover_id: 1, qqq: 1 }, name: "undercover_id_1_qqq_1", ns: "patch-containers-id-pages-id-api.bookstores", background: true }
+[33mbingo_1           |[0m 2018-08-02T13:27:24.450+0000 I INDEX    [conn2] build index done.  scanned 0 total records. 0 secs
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/gnext [32m200 [0m0.637 ms - 214[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob gnext created with name "non-existing-nice-animal"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/droppables [32m200 [0m0.622 ms - 243[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob droppable created with name "quickyabc"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/selectable-mistery [32m200 [0m0.389 ms - 256[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob antenna method created with name "dropss"
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 45 milliseconds with status 201
+[32mcontainers-api_1    |[0m info: XXX_AB patch-containers-id-pages-id-api - Received POST /api/containers/5b6306bcb00e0c001e05ef54/pages request
+[32mcontainers-api_1    |[0m info: XXX_AB patch-containers-id-pages-id-api - Y-Header-VZ for POST /api/containers/5b6306bcb00e0c001e05ef54/pages request: patch-containers-id-pages-id-api
+[36mexternal-globs_1  |[0m [0mGET /daemons-api-url/globs/8752727 [32m200 [0m0.244 ms - 65[0m
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/globs/8752727/pages [32m200 [0m0.607 ms - 182[0m
+[32mcontainers-api_1    |[0m info: XXX_AB patch-containers-id-pages-id-api - Completed in 38 milliseconds with status 200
+[35msut_1             |[0m     for a non daemons type undercover
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received POST /api/containers request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for POST /api/containers request: patch-containers-id-pages-id-api
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/test/glob [32m200 [0m0.402 ms - 2[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - undercover created. Id: 5b6306bcb00e0c001e05ef55
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/globs [32m200 [0m0.386 ms - 92[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - daemons undercover created: id "6106748"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/gnext [32m200 [0m0.324 ms - 215[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob gnext created with name "non-existing-nice-animal"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/droppables [32m200 [0m0.349 ms - 243[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob droppable created with name "quickyabc"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/selectable-mistery [32m200 [0m0.355 ms - 256[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob antenna method created with name "dropss"
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 24 milliseconds with status 201
+[32mcontainers-api_1    |[0m info: XXX_AB patch-containers-id-pages-id-api - Received PATCH /api/containers/5b6306bcb00e0c001e05ef55/pages/6557321 request
+[32mcontainers-api_1    |[0m info: XXX_AB patch-containers-id-pages-id-api - Y-Header-VZ for PATCH /api/containers/5b6306bcb00e0c001e05ef55/pages/6557321 request: patch-containers-id-pages-id-api
+[32mcontainers-api_1    |[0m info: XXX_AB patch-containers-id-pages-id-api - Completed in 3 milliseconds with status 404
+[35msut_1             |[0m       ✓ should respond 404 Not Found
+[35msut_1             |[0m     for a daemons type undercover
+[32mcontainers-api_1    |[0m info: XXX_AB patch-containers-id-pages-id-api - Received PATCH /api/containers/5b6306bcb00e0c001e05ef54/pages/6557321 request
+[32mcontainers-api_1    |[0m info: XXX_AB patch-containers-id-pages-id-api - Y-Header-VZ for PATCH /api/containers/5b6306bcb00e0c001e05ef54/pages/6557321 request: patch-containers-id-pages-id-api
+[36mexternal-globs_1  |[0m [0mGET /daemons-api-url/globs/8752727 [32m200 [0m0.239 ms - 64[0m
+[36mexternal-globs_1  |[0m [0mPATCH /daemons-api-url/globs/8752727/pages/6557321 [32m200 [0m0.684 ms - 182[0m
+[32mcontainers-api_1    |[0m info: XXX_AB patch-containers-id-pages-id-api - Completed in 10 milliseconds with status 200
+[35msut_1             |[0m       ✓ should respond 200 Ok
+[32mcontainers-api_1    |[0m info: XXX_AB patch-containers-id-pages-id-api - Received PATCH /api/containers/5b6306bcb00e0c001e05ef54/pages/6557321 request
+[32mcontainers-api_1    |[0m info: XXX_AB patch-containers-id-pages-id-api - Y-Header-VZ for PATCH /api/containers/5b6306bcb00e0c001e05ef54/pages/6557321 request: patch-containers-id-pages-id-api
+[36mexternal-globs_1  |[0m [0mGET /daemons-api-url/globs/8752727 [32m200 [0m0.245 ms - 65[0m
+[36mexternal-globs_1  |[0m [0mPATCH /daemons-api-url/globs/8752727/pages/6557321 [32m200 [0m0.396 ms - 182[0m
+[32mcontainers-api_1    |[0m info: XXX_AB patch-containers-id-pages-id-api - Completed in 9 milliseconds with status 200
+[35msut_1             |[0m       ✓ should respond with an entity object
+[35msut_1             |[0m 
+[35msut_1             |[0m   PATCH /containers/:id/haves/:id
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received POST /api/containers request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for POST /api/containers request: patch-containers-id-haves-id-api
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/test/glob [32m200 [0m0.670 ms - 2[0m
+[33mbingo_1           |[0m 2018-08-02T13:27:24.589+0000 I INDEX    [conn3] build index on: patch-containers-id-haves-id-api.bookstores properties: { v: 2, key: { qqq: 1 }, name: "qqq_1", ns: "patch-containers-id-haves-id-api.bookstores", background: true }
+[33mbingo_1           |[0m 2018-08-02T13:27:24.589+0000 I INDEX    [conn3] build index done.  scanned 0 total records. 0 secs
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - undercover created. Id: 5b6306bcb00e0c001e05ef56
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/globs [32m200 [0m0.535 ms - 92[0m
+[33mbingo_1           |[0m 2018-08-02T13:27:24.603+0000 I INDEX    [conn3] build index on: patch-containers-id-haves-id-api.bookstores properties: { v: 2, unique: true, key: { undercover_id: 1, qqq: 1 }, name: "undercover_id_1_qqq_1", ns: "patch-containers-id-haves-id-api.bookstores", background: true }
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - daemons undercover created: id "5973152"
+[33mbingo_1           |[0m 2018-08-02T13:27:24.604+0000 I INDEX    [conn3] build index done.  scanned 0 total records. 0 secs
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/gnext [32m200 [0m0.838 ms - 215[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob gnext created with name "non-existing-nice-animal"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/droppables [32m200 [0m0.679 ms - 243[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob droppable created with name "quickyabc"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/selectable-mistery [32m200 [0m0.358 ms - 256[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob antenna method created with name "dropss"
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 50 milliseconds with status 201
+[32mcontainers-api_1    |[0m info: XXX_AB patch-containers-id-haves-id-api - Received POST /api/containers/5b6306bcb00e0c001e05ef56/haves request
+[32mcontainers-api_1    |[0m info: XXX_AB patch-containers-id-haves-id-api - Y-Header-VZ for POST /api/containers/5b6306bcb00e0c001e05ef56/haves request: patch-containers-id-haves-id-api
+[36mexternal-globs_1  |[0m [0mGET /daemons-api-url/globs/5973152 [32m200 [0m0.239 ms - 65[0m
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/globs/5973152/haves [32m200 [0m0.575 ms - 182[0m
+[32mcontainers-api_1    |[0m info: XXX_AB patch-containers-id-haves-id-api - Completed in 9 milliseconds with status 200
+[35msut_1             |[0m     for a non daemons type undercover
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received POST /api/containers request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for POST /api/containers request: patch-containers-id-haves-id-api
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/test/glob [32m200 [0m0.494 ms - 2[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - undercover created. Id: 5b6306bcb00e0c001e05ef57
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/globs [32m200 [0m0.319 ms - 92[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - daemons undercover created: id "8594147"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/gnext [32m200 [0m0.341 ms - 215[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob gnext created with name "non-existing-nice-animal"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/droppables [32m200 [0m0.595 ms - 243[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob droppable created with name "quickyabc"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/selectable-mistery [32m200 [0m0.421 ms - 256[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob antenna method created with name "dropss"
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 23 milliseconds with status 201
+[32mcontainers-api_1    |[0m info: XXX_AB patch-containers-id-haves-id-api - Received PATCH /api/containers/5b6306bcb00e0c001e05ef57/haves/5103495 request
+[32mcontainers-api_1    |[0m info: XXX_AB patch-containers-id-haves-id-api - Y-Header-VZ for PATCH /api/containers/5b6306bcb00e0c001e05ef57/haves/5103495 request: patch-containers-id-haves-id-api
+[32mcontainers-api_1    |[0m info: XXX_AB patch-containers-id-haves-id-api - Completed in 3 milliseconds with status 404
+[35msut_1             |[0m       ✓ should respond 404 Not Found
+[35msut_1             |[0m     for a daemons type undercover
+[32mcontainers-api_1    |[0m info: XXX_AB patch-containers-id-haves-id-api - Received PATCH /api/containers/5b6306bcb00e0c001e05ef56/haves/5103495 request
+[32mcontainers-api_1    |[0m info: XXX_AB patch-containers-id-haves-id-api - Y-Header-VZ for PATCH /api/containers/5b6306bcb00e0c001e05ef56/haves/5103495 request: patch-containers-id-haves-id-api
+[36mexternal-globs_1  |[0m [0mGET /daemons-api-url/globs/5973152 [32m200 [0m0.243 ms - 64[0m
+[36mexternal-globs_1  |[0m [0mPATCH /daemons-api-url/globs/5973152/haves/5103495 [32m200 [0m0.420 ms - 182[0m
+[32mcontainers-api_1    |[0m info: XXX_AB patch-containers-id-haves-id-api - Completed in 8 milliseconds with status 200
+[35msut_1             |[0m       ✓ should respond 200 Ok
+[32mcontainers-api_1    |[0m info: XXX_AB patch-containers-id-haves-id-api - Received PATCH /api/containers/5b6306bcb00e0c001e05ef56/haves/5103495 request
+[32mcontainers-api_1    |[0m info: XXX_AB patch-containers-id-haves-id-api - Y-Header-VZ for PATCH /api/containers/5b6306bcb00e0c001e05ef56/haves/5103495 request: patch-containers-id-haves-id-api
+[36mexternal-globs_1  |[0m [0mGET /daemons-api-url/globs/5973152 [32m200 [0m0.247 ms - 65[0m
+[36mexternal-globs_1  |[0m [0mPATCH /daemons-api-url/globs/5973152/haves/5103495 [32m200 [0m0.368 ms - 182[0m
+[32mcontainers-api_1    |[0m info: XXX_AB patch-containers-id-haves-id-api - Completed in 9 milliseconds with status 200
+[35msut_1             |[0m       ✓ should respond with an entity object
+[35msut_1             |[0m 
+[35msut_1             |[0m   PATCH /containers/:id
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received POST /api/containers request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for POST /api/containers request: patch-containers-api
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/test/glob [32m200 [0m0.548 ms - 2[0m
+[33mbingo_1           |[0m 2018-08-02T13:27:24.712+0000 I INDEX    [conn1] build index on: patch-containers-api.bookstores properties: { v: 2, key: { qqq: 1 }, name: "qqq_1", ns: "patch-containers-api.bookstores", background: true }
+[33mbingo_1           |[0m 2018-08-02T13:27:24.713+0000 I INDEX    [conn1] build index done.  scanned 0 total records. 0 secs
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - undercover created. Id: 5b6306bcb00e0c001e05ef58
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/globs [32m200 [0m0.496 ms - 222[0m
+[33mbingo_1           |[0m 2018-08-02T13:27:24.727+0000 I INDEX    [conn1] build index on: patch-containers-api.bookstores properties: { v: 2, unique: true, key: { undercover_id: 1, qqq: 1 }, name: "undercover_id_1_qqq_1", ns: "patch-containers-api.bookstores", background: true }
+[33mbingo_1           |[0m 2018-08-02T13:27:24.727+0000 I INDEX    [conn1] build index done.  scanned 0 total records. 0 secs
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - daemons undercover created: id "9477129"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/gnext [32m200 [0m0.361 ms - 183[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob gnext created with name "ok-nice-animal"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/droppables [32m200 [0m0.364 ms - 243[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob droppable created with name "quickyabc"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/selectable-mistery [32m200 [0m0.356 ms - 256[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob antenna method created with name "dropss"
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 42 milliseconds with status 201
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received PATCH /api/containers/5b6306bcb00e0c001e05ef58 request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for PATCH /api/containers/5b6306bcb00e0c001e05ef58 request: patch-containers-api
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - undercover update error
+[32mcontainers-api_1    |[0m error: XXX_AB MISSING - {"internal_type":"json_error","type":"https://github.com/testt-io/problem-types/blob/master/validation-error","title":"Invalid undercover data","status":400,"detail":"See attached data for more info","more_data":{"isJoi":true,"name":"ValidationError","details":[{"message":"\"nice-animal\" is not allowed","path":["data","daemons","nice-animal"],"type":"any.unknown","context":{"key":"nice-animal","label":"nice-animal"}}],"_object":{"status":"on","name":"daemons test undercover","data":{"daemons":{"nice-animal":"new-nice-animal"}}}}}
+[32mcontainers-api_1    |[0m error: Catched a user defined error 400 Invalid undercover data
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 6 milliseconds with status 400
+[35msut_1             |[0m     ✓ should not allow daemons nice-animal
+[35msut_1             |[0m     without Y-Header-VZ
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received PATCH /api/containers/5b6306bcb00e0c001e05ef58 request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for PATCH /api/containers/5b6306bcb00e0c001e05ef58 request: MISSING
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 1 milliseconds with status 401
+[35msut_1             |[0m       ✓ should respond 401 Unauthorized
+[35msut_1             |[0m     with invalid data
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received PATCH /api/containers/5b6306bcb00e0c001e05ef58 request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for PATCH /api/containers/5b6306bcb00e0c001e05ef58 request: patch-containers-api
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - undercover updated. Id: 5b6306bcb00e0c001e05ef58
+[36mexternal-globs_1  |[0m [0mPATCH /daemons-api-url/globs/9477129 [32m200 [0m0.480 ms - 2[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - daemons undercover updated: id "undefined"
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 10 milliseconds with status 200
+[35msut_1             |[0m       ✓ should respond 400 Bad Request
+[35msut_1             |[0m     with valid data
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received PATCH /api/containers/5b6306bcb00e0c001e05ef58 request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for PATCH /api/containers/5b6306bcb00e0c001e05ef58 request: patch-containers-api
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - undercover updated. Id: 5b6306bcb00e0c001e05ef58
+[36mexternal-globs_1  |[0m [0mPATCH /daemons-api-url/globs/9477129 [32m200 [0m0.540 ms - 165[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - daemons undercover updated: id "undefined"
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 9 milliseconds with status 200
+[35msut_1             |[0m       ✓ should respond 200 Ok
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received PATCH /api/containers/5b6306bcb00e0c001e05ef58 request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for PATCH /api/containers/5b6306bcb00e0c001e05ef58 request: patch-containers-api
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - undercover updated. Id: 5b6306bcb00e0c001e05ef58
+[36mexternal-globs_1  |[0m [0mPATCH /daemons-api-url/globs/9477129 [32m200 [0m0.446 ms - 165[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - daemons undercover updated: id "undefined"
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 7 milliseconds with status 200
+[35msut_1             |[0m       ✓ response should include daemons data
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received PATCH /api/containers/5b6306bcb00e0c001e05ef58 request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for PATCH /api/containers/5b6306bcb00e0c001e05ef58 request: patch-containers-api
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - undercover updated. Id: 5b6306bcb00e0c001e05ef58
+[36mexternal-globs_1  |[0m [0mPATCH /daemons-api-url/globs/9477129 [32m200 [0m0.527 ms - 165[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - daemons undercover updated: id "undefined"
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 8 milliseconds with status 200
+[35msut_1             |[0m       ✓ response should not include mister blob data
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received PATCH /api/containers/5b6306bcb00e0c001e05ef58 request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for PATCH /api/containers/5b6306bcb00e0c001e05ef58 request: patch-containers-api
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - undercover updated. Id: 5b6306bcb00e0c001e05ef58
+[36mexternal-globs_1  |[0m [0mPATCH /daemons-api-url/globs/9477129 [32m200 [0m0.394 ms - 165[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - daemons undercover updated: id "undefined"
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 7 milliseconds with status 200
+[35msut_1             |[0m       ✓ response should not include data.daemons_id
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received PATCH /api/containers/5b6306bcb00e0c001e05ef58 request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for PATCH /api/containers/5b6306bcb00e0c001e05ef58 request: patch-containers-api
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - undercover updated. Id: 5b6306bcb00e0c001e05ef58
+[36mexternal-globs_1  |[0m [0mPATCH /daemons-api-url/globs/9477129 [32m200 [0m0.401 ms - 165[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - daemons undercover updated: id "undefined"
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 7 milliseconds with status 200
+[35msut_1             |[0m       ✓ response should not include data.unique_cart_id
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received PATCH /api/containers/5b6306bcb00e0c001e05ef58 request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for PATCH /api/containers/5b6306bcb00e0c001e05ef58 request: patch-containers-api
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - undercover updated. Id: 5b6306bcb00e0c001e05ef58
+[36mexternal-globs_1  |[0m [0mPATCH /daemons-api-url/globs/9477129 [32m200 [0m0.517 ms - 165[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - daemons undercover updated: id "undefined"
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 8 milliseconds with status 200
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received GET /api/containers/5b6306bcb00e0c001e05ef58 request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for GET /api/containers/5b6306bcb00e0c001e05ef58 request: patch-containers-api
+[36mexternal-globs_1  |[0m [0mGET /daemons-api-url/globs/9477129 [32m200 [0m0.251 ms - 65[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 7 milliseconds with status 200
+[35msut_1             |[0m       ✓ should update daemons undercover
+[35msut_1             |[0m 
+[35msut_1             |[0m   POST /containers/:id/blinbling-rates
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received POST /api/containers request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for POST /api/containers request: have-containers-id-blinbling-rates-api
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/test/glob [32m200 [0m0.502 ms - 2[0m
+[33mbingo_1           |[0m 2018-08-02T13:27:24.859+0000 I INDEX    [conn1] build index on: have-containers-id-blinbling-rates-api.bookstores properties: { v: 2, key: { qqq: 1 }, name: "qqq_1", ns: "have-containers-id-blinbling-rates-api.bookstores", background: true }
+[33mbingo_1           |[0m 2018-08-02T13:27:24.864+0000 I INDEX    [conn1] build index done.  scanned 0 total records. 0 secs
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - undercover created. Id: 5b6306bcb00e0c001e05ef59
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/globs [32m200 [0m0.672 ms - 91[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - daemons undercover created: id "7465568"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/gnext [32m200 [0m0.407 ms - 220[0m
+[33mbingo_1           |[0m 2018-08-02T13:27:24.874+0000 I INDEX    [conn1] build index on: have-containers-id-blinbling-rates-api.bookstores properties: { v: 2, unique: true, key: { undercover_id: 1, qqq: 1 }, name: "undercover_id_1_qqq_1", ns: "have-containers-id-blinbling-rates-api.bookstores", background: true }
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob gnext created with name "non-existing-nice-animal"
+[33mbingo_1           |[0m 2018-08-02T13:27:24.875+0000 I INDEX    [conn1] build index done.  scanned 0 total records. 0 secs
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/droppables [32m200 [0m0.488 ms - 243[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob droppable created with name "quickyabc"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/selectable-mistery [32m200 [0m0.373 ms - 256[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob antenna method created with name "dropss"
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 42 milliseconds with status 201
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received POST /api/containers/5b6306bcb00e0c001e05ef59/blinbling-rates request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for POST /api/containers/5b6306bcb00e0c001e05ef59/blinbling-rates request: have-containers-id-blinbling-rates-api
+[36mexternal-globs_1  |[0m [0mGET /daemons-api-url/globs/7465568 [32m200 [0m0.248 ms - 64[0m
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/droppables [32m200 [0m0.366 ms - 226[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 9 milliseconds with status 200
+[35msut_1             |[0m     for a non daemons type undercover
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received POST /api/containers request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for POST /api/containers request: have-containers-id-blinbling-rates-api
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/test/glob [32m200 [0m0.402 ms - 2[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - undercover created. Id: 5b6306bcb00e0c001e05ef5a
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/globs [32m200 [0m0.438 ms - 91[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - daemons undercover created: id "826181"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/gnext [32m200 [0m0.309 ms - 220[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob gnext created with name "non-existing-nice-animal"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/droppables [32m200 [0m0.484 ms - 243[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob droppable created with name "quickyabc"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/selectable-mistery [32m200 [0m0.356 ms - 256[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob antenna method created with name "dropss"
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 25 milliseconds with status 201
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received POST /api/containers/5b6306bcb00e0c001e05ef5a/blinbling-rates request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for POST /api/containers/5b6306bcb00e0c001e05ef5a/blinbling-rates request: have-containers-id-blinbling-rates-api
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 3 milliseconds with status 404
+[35msut_1             |[0m       ✓ should respond 404 Not Found
+[35msut_1             |[0m     for a daemons type undercover
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received POST /api/containers/5b6306bcb00e0c001e05ef59/blinbling-rates request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for POST /api/containers/5b6306bcb00e0c001e05ef59/blinbling-rates request: have-containers-id-blinbling-rates-api
+[36mexternal-globs_1  |[0m [0mGET /daemons-api-url/globs/7465568 [32m200 [0m0.225 ms - 65[0m
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/droppables [32m200 [0m0.356 ms - 226[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 11 milliseconds with status 200
+[35msut_1             |[0m       ✓ should respond 200 Ok
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received POST /api/containers/5b6306bcb00e0c001e05ef59/blinbling-rates request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for POST /api/containers/5b6306bcb00e0c001e05ef59/blinbling-rates request: have-containers-id-blinbling-rates-api
+[36mexternal-globs_1  |[0m [0mGET /daemons-api-url/globs/7465568 [32m200 [0m0.431 ms - 65[0m
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/droppables [32m200 [0m0.353 ms - 226[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 9 milliseconds with status 200
+[35msut_1             |[0m       ✓ should respond with an entity object
+[35msut_1             |[0m 
+[35msut_1             |[0m   POST /containers/:id/pages
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received POST /api/containers request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for POST /api/containers request: have-containers-id-pages-api
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/test/glob [32m200 [0m0.612 ms - 2[0m
+[33mbingo_1           |[0m 2018-08-02T13:27:24.980+0000 I INDEX    [conn2] build index on: have-containers-id-pages-api.bookstores properties: { v: 2, key: { qqq: 1 }, name: "qqq_1", ns: "have-containers-id-pages-api.bookstores", background: true }
+[33mbingo_1           |[0m 2018-08-02T13:27:24.980+0000 I INDEX    [conn2] build index done.  scanned 0 total records. 0 secs
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - undercover created. Id: 5b6306bcb00e0c001e05ef5b
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/globs [32m200 [0m0.730 ms - 91[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - daemons undercover created: id "7304778"
+[33mbingo_1           |[0m 2018-08-02T13:27:24.994+0000 I INDEX    [conn2] build index on: have-containers-id-pages-api.bookstores properties: { v: 2, unique: true, key: { undercover_id: 1, qqq: 1 }, name: "undercover_id_1_qqq_1", ns: "have-containers-id-pages-api.bookstores", background: true }
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/gnext [32m200 [0m0.355 ms - 211[0m
+[33mbingo_1           |[0m 2018-08-02T13:27:24.996+0000 I INDEX    [conn2] build index done.  scanned 0 total records. 0 secs
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob gnext created with name "non-existing-nice-animal"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/droppables [32m200 [0m0.335 ms - 243[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob droppable created with name "quickyabc"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/selectable-mistery [32m200 [0m0.418 ms - 256[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob antenna method created with name "dropss"
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 39 milliseconds with status 201
+[32mcontainers-api_1    |[0m info: XXX_AB have-containers-id-pages-api - Received POST /api/containers/5b6306bcb00e0c001e05ef5b/pages request
+[32mcontainers-api_1    |[0m info: XXX_AB have-containers-id-pages-api - Y-Header-VZ for POST /api/containers/5b6306bcb00e0c001e05ef5b/pages request: have-containers-id-pages-api
+[36mexternal-globs_1  |[0m [0mGET /daemons-api-url/globs/7304778 [32m200 [0m0.267 ms - 65[0m
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/globs/7304778/pages [32m200 [0m0.476 ms - 182[0m
+[32mcontainers-api_1    |[0m info: XXX_AB have-containers-id-pages-api - Completed in 9 milliseconds with status 200
+[35msut_1             |[0m     for a non daemons type undercover
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received POST /api/containers request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for POST /api/containers request: have-containers-id-pages-api
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/test/glob [32m200 [0m0.367 ms - 2[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - undercover created. Id: 5b6306bdb00e0c001e05ef5c
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/globs [32m200 [0m0.364 ms - 92[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - daemons undercover created: id "7950743"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/gnext [32m200 [0m0.342 ms - 211[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob gnext created with name "non-existing-nice-animal"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/droppables [32m200 [0m2.423 ms - 243[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob droppable created with name "quickyabc"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/selectable-mistery [32m200 [0m0.457 ms - 256[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob antenna method created with name "dropss"
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 27 milliseconds with status 201
+[32mcontainers-api_1    |[0m info: XXX_AB have-containers-id-pages-api - Received POST /api/containers/5b6306bdb00e0c001e05ef5c/pages request
+[32mcontainers-api_1    |[0m info: XXX_AB have-containers-id-pages-api - Y-Header-VZ for POST /api/containers/5b6306bdb00e0c001e05ef5c/pages request: have-containers-id-pages-api
+[32mcontainers-api_1    |[0m info: XXX_AB have-containers-id-pages-api - Completed in 3 milliseconds with status 404
+[35msut_1             |[0m       ✓ should respond 404 Not Found
+[35msut_1             |[0m     for a daemons type undercover
+[32mcontainers-api_1    |[0m info: XXX_AB have-containers-id-pages-api - Received POST /api/containers/5b6306bcb00e0c001e05ef5b/pages request
+[32mcontainers-api_1    |[0m info: XXX_AB have-containers-id-pages-api - Y-Header-VZ for POST /api/containers/5b6306bcb00e0c001e05ef5b/pages request: have-containers-id-pages-api
+[36mexternal-globs_1  |[0m [0mGET /daemons-api-url/globs/7304778 [32m200 [0m0.272 ms - 65[0m
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/globs/7304778/pages [32m200 [0m0.422 ms - 182[0m
+[32mcontainers-api_1    |[0m info: XXX_AB have-containers-id-pages-api - Completed in 9 milliseconds with status 200
+[35msut_1             |[0m       ✓ should respond 200 Ok
+[32mcontainers-api_1    |[0m info: XXX_AB have-containers-id-pages-api - Received POST /api/containers/5b6306bcb00e0c001e05ef5b/pages request
+[32mcontainers-api_1    |[0m info: XXX_AB have-containers-id-pages-api - Y-Header-VZ for POST /api/containers/5b6306bcb00e0c001e05ef5b/pages request: have-containers-id-pages-api
+[36mexternal-globs_1  |[0m [0mGET /daemons-api-url/globs/7304778 [32m200 [0m0.259 ms - 64[0m
+[32mcontainers-api_1    |[0m info: XXX_AB have-containers-id-pages-api - Completed in 11 milliseconds with status 200
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/globs/7304778/pages [32m200 [0m0.430 ms - 182[0m
+[35msut_1             |[0m       ✓ should respond with an entity object
+[35msut_1             |[0m 
+[35msut_1             |[0m   POST /containers/:id/haves
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received POST /api/containers request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for POST /api/containers request: have-containers-id-haves-api
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/test/glob [32m200 [0m0.540 ms - 2[0m
+[33mbingo_1           |[0m 2018-08-02T13:27:25.098+0000 I INDEX    [conn3] build index on: have-containers-id-haves-api.bookstores properties: { v: 2, key: { qqq: 1 }, name: "qqq_1", ns: "have-containers-id-haves-api.bookstores", background: true }
+[33mbingo_1           |[0m 2018-08-02T13:27:25.098+0000 I INDEX    [conn3] build index done.  scanned 0 total records. 0 secs
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - undercover created. Id: 5b6306bdb00e0c001e05ef5d
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/globs [32m200 [0m0.447 ms - 92[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - daemons undercover created: id "7373715"
+[33mbingo_1           |[0m 2018-08-02T13:27:25.115+0000 I INDEX    [conn3] build index on: have-containers-id-haves-api.bookstores properties: { v: 2, unique: true, key: { undercover_id: 1, qqq: 1 }, name: "undercover_id_1_qqq_1", ns: "have-containers-id-haves-api.bookstores", background: true }
+[33mbingo_1           |[0m 2018-08-02T13:27:25.115+0000 I INDEX    [conn3] build index done.  scanned 0 total records. 0 secs
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/gnext [32m200 [0m0.303 ms - 211[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob gnext created with name "non-existing-nice-animal"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/droppables [32m200 [0m0.351 ms - 243[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob droppable created with name "quickyabc"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/selectable-mistery [32m200 [0m0.290 ms - 256[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob antenna method created with name "dropss"
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 42 milliseconds with status 201
+[32mcontainers-api_1    |[0m info: XXX_AB have-containers-id-haves-api - Received POST /api/containers/5b6306bdb00e0c001e05ef5d/haves request
+[32mcontainers-api_1    |[0m info: XXX_AB have-containers-id-haves-api - Y-Header-VZ for POST /api/containers/5b6306bdb00e0c001e05ef5d/haves request: have-containers-id-haves-api
+[36mexternal-globs_1  |[0m [0mGET /daemons-api-url/globs/7373715 [32m200 [0m0.215 ms - 65[0m
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/globs/7373715/haves [32m200 [0m0.501 ms - 181[0m
+[32mcontainers-api_1    |[0m info: XXX_AB have-containers-id-haves-api - Completed in 9 milliseconds with status 200
+[35msut_1             |[0m     for a non daemons type undercover
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received POST /api/containers request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for POST /api/containers request: have-containers-id-haves-api
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/test/glob [32m200 [0m0.463 ms - 2[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - undercover created. Id: 5b6306bdb00e0c001e05ef5e
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/globs [32m200 [0m0.432 ms - 92[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - daemons undercover created: id "7335857"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/gnext [32m200 [0m0.308 ms - 211[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob gnext created with name "non-existing-nice-animal"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/droppables [32m200 [0m0.390 ms - 243[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob droppable created with name "quickyabc"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/selectable-mistery [32m200 [0m0.401 ms - 256[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob antenna method created with name "dropss"
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 21 milliseconds with status 201
+[32mcontainers-api_1    |[0m info: XXX_AB have-containers-id-haves-api - Received POST /api/containers/5b6306bdb00e0c001e05ef5e/haves request
+[32mcontainers-api_1    |[0m info: XXX_AB have-containers-id-haves-api - Y-Header-VZ for POST /api/containers/5b6306bdb00e0c001e05ef5e/haves request: have-containers-id-haves-api
+[32mcontainers-api_1    |[0m info: XXX_AB have-containers-id-haves-api - Completed in 3 milliseconds with status 404
+[35msut_1             |[0m       ✓ should respond 404 Not Found
+[35msut_1             |[0m     for a daemons type undercover
+[32mcontainers-api_1    |[0m info: XXX_AB have-containers-id-haves-api - Received POST /api/containers/5b6306bdb00e0c001e05ef5d/haves request
+[32mcontainers-api_1    |[0m info: XXX_AB have-containers-id-haves-api - Y-Header-VZ for POST /api/containers/5b6306bdb00e0c001e05ef5d/haves request: have-containers-id-haves-api
+[36mexternal-globs_1  |[0m [0mGET /daemons-api-url/globs/7373715 [32m200 [0m0.290 ms - 65[0m
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/globs/7373715/haves [32m200 [0m0.333 ms - 182[0m
+[32mcontainers-api_1    |[0m info: XXX_AB have-containers-id-haves-api - Completed in 9 milliseconds with status 200
+[35msut_1             |[0m       ✓ should respond 200 Ok
+[32mcontainers-api_1    |[0m info: XXX_AB have-containers-id-haves-api - Received POST /api/containers/5b6306bdb00e0c001e05ef5d/haves request
+[32mcontainers-api_1    |[0m info: XXX_AB have-containers-id-haves-api - Y-Header-VZ for POST /api/containers/5b6306bdb00e0c001e05ef5d/haves request: have-containers-id-haves-api
+[36mexternal-globs_1  |[0m [0mGET /daemons-api-url/globs/7373715 [32m200 [0m0.213 ms - 65[0m
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/globs/7373715/haves [32m200 [0m0.626 ms - 182[0m
+[32mcontainers-api_1    |[0m info: XXX_AB have-containers-id-haves-api - Completed in 11 milliseconds with status 200
+[35msut_1             |[0m       ✓ should respond with an entity object
+[35msut_1             |[0m 
+[35msut_1             |[0m   POST /containers/:id/qqqs
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received POST /api/containers request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for POST /api/containers request: have-containers-id-qqqs-api
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/test/glob [32m200 [0m0.492 ms - 2[0m
+[33mbingo_1           |[0m 2018-08-02T13:27:25.215+0000 I INDEX    [conn1] build index on: have-containers-id-qqqs-api.bookstores properties: { v: 2, key: { qqq: 1 }, name: "qqq_1", ns: "have-containers-id-qqqs-api.bookstores", background: true }
+[33mbingo_1           |[0m 2018-08-02T13:27:25.215+0000 I INDEX    [conn1] build index done.  scanned 0 total records. 0 secs
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - undercover created. Id: 5b6306bdb00e0c001e05ef5f
+[33mbingo_1           |[0m 2018-08-02T13:27:25.226+0000 I INDEX    [conn2] build index on: have-containers-id-qqqs-api.bookstores properties: { v: 2, unique: true, key: { undercover_id: 1, qqq: 1 }, name: "undercover_id_1_qqq_1", ns: "have-containers-id-qqqs-api.bookstores", background: true }
+[33mbingo_1           |[0m 2018-08-02T13:27:25.226+0000 I INDEX    [conn2] build index done.  scanned 0 total records. 0 secs
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/globs [32m200 [0m0.393 ms - 91[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - daemons undercover created: id "5631438"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/gnext [32m200 [0m0.288 ms - 210[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob gnext created with name "non-existing-nice-animal"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/droppables [32m200 [0m0.302 ms - 243[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob droppable created with name "quickyabc"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/selectable-mistery [32m200 [0m0.282 ms - 256[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob antenna method created with name "dropss"
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 41 milliseconds with status 201
+[35msut_1             |[0m     without Y-Header-VZ
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received POST /api/containers/5b2b9ac9d119c705412bd471/qqqs request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for POST /api/containers/5b2b9ac9d119c705412bd471/qqqs request: MISSING
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 1 milliseconds with status 401
+[35msut_1             |[0m       ✓ should respond 401 Unauthorized
+[35msut_1             |[0m     with non existent undercover
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received POST /api/containers/5b2b9ac9d119c705412bd471/qqqs request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for POST /api/containers/5b2b9ac9d119c705412bd471/qqqs request: have-containers-id-qqqs-api
+[36mexternal-globs_1  |[0m [0mGET /bookstore-get-by-qqq-url/have-containers-id-qqqs-api-bookstore [32m200 [0m0.290 ms - 1158[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Retrieving bookstore with qqq "have-containers-id-qqqs-api-bookstore" from http://external-globs/bookstore-get-by-qqq-url successfull
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 7 milliseconds with status 404
+[35msut_1             |[0m       ✓ should respond 404 Not Found
+[35msut_1             |[0m     with valid data
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received POST /api/containers/5b6306bdb00e0c001e05ef5f/qqqs request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for POST /api/containers/5b6306bdb00e0c001e05ef5f/qqqs request: have-containers-id-qqqs-api
+[36mexternal-globs_1  |[0m [0mGET /bookstore-get-by-qqq-url/have-containers-id-qqqs-api-bookstore [32m200 [0m0.212 ms - 1158[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Retrieving bookstore with qqq "have-containers-id-qqqs-api-bookstore" from http://external-globs/bookstore-get-by-qqq-url successfull
+[36mexternal-globs_1  |[0m [0mPUT /daemons-api-url/globs/5631438/bookstore/have-containers-id-qqqs-api-bookstore [32m200 [0m0.359 ms - 2[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Publishing bookstore "have-containers-id-qqqs-api-bookstore" to daemons "5631438". Success
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 11 milliseconds with status 200
+[35msut_1             |[0m       ✓ should respond 200 Ok
+[35msut_1             |[0m     re-publishing same qqq
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received POST /api/containers/5b6306bdb00e0c001e05ef5f/qqqs request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for POST /api/containers/5b6306bdb00e0c001e05ef5f/qqqs request: have-containers-id-qqqs-api
+[36mexternal-globs_1  |[0m [0mGET /bookstore-get-by-qqq-url/have-containers-id-qqqs-api-bookstore [32m200 [0m0.234 ms - 1158[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Retrieving bookstore with qqq "have-containers-id-qqqs-api-bookstore" from http://external-globs/bookstore-get-by-qqq-url successfull
+[36mexternal-globs_1  |[0m [0mPUT /daemons-api-url/globs/5631438/bookstore/have-containers-id-qqqs-api-bookstore [32m200 [0m0.394 ms - 2[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Publishing bookstore "have-containers-id-qqqs-api-bookstore" to daemons "5631438". Success
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 12 milliseconds with status 200
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received POST /api/containers/5b6306bdb00e0c001e05ef5f/qqqs request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for POST /api/containers/5b6306bdb00e0c001e05ef5f/qqqs request: have-containers-id-qqqs-api
+[36mexternal-globs_1  |[0m [0mGET /bookstore-get-by-qqq-url/have-containers-id-qqqs-api-bookstore [32m200 [0m0.196 ms - 1158[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Retrieving bookstore with qqq "have-containers-id-qqqs-api-bookstore" from http://external-globs/bookstore-get-by-qqq-url successfull
+[36mexternal-globs_1  |[0m [0mPUT /daemons-api-url/globs/5631438/bookstore/have-containers-id-qqqs-api-bookstore [32m200 [0m0.337 ms - 2[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Publishing bookstore "have-containers-id-qqqs-api-bookstore" to daemons "5631438". Success
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 11 milliseconds with status 200
+[35msut_1             |[0m       ✓ should respond 200 Ok
+[35msut_1             |[0m 
+[35msut_1             |[0m   POST /containers
+[35msut_1             |[0m     without Y-Header-VZ
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received POST /api/containers request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for POST /api/containers request: MISSING
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 1 milliseconds with status 401
+[35msut_1             |[0m       ✓ should respond 401 Unauthorized
+[35msut_1             |[0m     with invalid data
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received POST /api/containers request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for POST /api/containers request: have-containers-api
+[32mcontainers-api_1    |[0m error: Catched a user defined error 400 Invalid undercover data
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 2 milliseconds with status 400
+[35msut_1             |[0m       ✓ should respond 400 Bad Request
+[35msut_1             |[0m     with empty data field
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received POST /api/containers request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for POST /api/containers request: have-containers-api
+[32mcontainers-api_1    |[0m error: Catched a user defined error 400 Invalid undercover data
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 2 milliseconds with status 400
+[35msut_1             |[0m       ✓ should respond 400 Bad Request
+[35msut_1             |[0m     with no data field
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received POST /api/containers request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for POST /api/containers request: have-containers-api
+[32mcontainers-api_1    |[0m error: Catched a user defined error 400 Invalid undercover data
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 2 milliseconds with status 400
+[35msut_1             |[0m       ✓ should respond 400 Bad Request
+[33mbingo_1           |[0m 2018-08-02T13:27:25.325+0000 I INDEX    [conn3] build index on: have-containers-api.bookstores properties: { v: 2, key: { qqq: 1 }, name: "qqq_1", ns: "have-containers-api.bookstores", background: true }
+[33mbingo_1           |[0m 2018-08-02T13:27:25.325+0000 I INDEX    [conn3] build index done.  scanned 0 total records. 0 secs
+[35msut_1             |[0m     with valid data
+[35msut_1             |[0m       with non-existing glob nice-animal
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received POST /api/containers request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for POST /api/containers request: have-containers-api
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/test/glob [32m200 [0m0.511 ms - 2[0m
+[33mbingo_1           |[0m 2018-08-02T13:27:25.334+0000 I INDEX    [conn2] build index on: have-containers-api.bookstores properties: { v: 2, unique: true, key: { undercover_id: 1, qqq: 1 }, name: "undercover_id_1_qqq_1", ns: "have-containers-api.bookstores", background: true }
+[33mbingo_1           |[0m 2018-08-02T13:27:25.334+0000 I INDEX    [conn2] build index done.  scanned 0 total records. 0 secs
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - undercover created. Id: 5b6306bdb00e0c001e05ef63
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/globs [32m200 [0m0.455 ms - 230[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - daemons undercover created: id "7512745"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/gnext [32m200 [0m0.424 ms - 196[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob gnext created with name "non-existing-entity"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/droppables [32m200 [0m0.330 ms - 243[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob droppable created with name "quickyabc"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/selectable-mistery [32m200 [0m0.306 ms - 256[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob antenna method created with name "dropss"
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 32 milliseconds with status 201
+[35msut_1             |[0m         ✓ should respond 201 Created
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received POST /api/containers request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for POST /api/containers request: have-containers-api
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/test/glob [32m200 [0m0.560 ms - 2[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - undercover created. Id: 5b6306bdb00e0c001e05ef64
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/globs [32m200 [0m0.379 ms - 229[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - daemons undercover created: id "598504"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/gnext [32m200 [0m0.276 ms - 196[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob gnext created with name "non-existing-entity"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/droppables [32m200 [0m0.508 ms - 243[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob droppable created with name "quickyabc"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/selectable-mistery [32m200 [0m0.920 ms - 256[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob antenna method created with name "dropss"
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 26 milliseconds with status 201
+[35msut_1             |[0m         ✓ response should include daemons data
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received POST /api/containers request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for POST /api/containers request: have-containers-api
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/test/glob [32m200 [0m0.316 ms - 2[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - undercover created. Id: 5b6306bdb00e0c001e05ef65
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/globs [32m200 [0m0.492 ms - 230[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - daemons undercover created: id "4927690"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/gnext [32m200 [0m0.287 ms - 196[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob gnext created with name "non-existing-entity"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/droppables [32m200 [0m0.303 ms - 243[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob droppable created with name "quickyabc"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/selectable-mistery [32m200 [0m0.250 ms - 256[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob antenna method created with name "dropss"
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 18 milliseconds with status 201
+[35msut_1             |[0m         ✓ response should not include mister blob data
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received POST /api/containers request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for POST /api/containers request: have-containers-api
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/test/glob [32m200 [0m0.285 ms - 2[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - undercover created. Id: 5b6306bdb00e0c001e05ef66
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/globs [32m200 [0m0.396 ms - 230[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - daemons undercover created: id "5891279"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/gnext [32m200 [0m0.318 ms - 196[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob gnext created with name "non-existing-entity"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/droppables [32m200 [0m0.290 ms - 242[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob droppable created with name "quickyabc"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/selectable-mistery [32m200 [0m0.370 ms - 256[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob antenna method created with name "dropss"
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 17 milliseconds with status 201
+[35msut_1             |[0m         ✓ response should not include data.daemons_id
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received POST /api/containers request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for POST /api/containers request: have-containers-api
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/test/glob [32m200 [0m0.298 ms - 2[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - undercover created. Id: 5b6306bdb00e0c001e05ef67
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/globs [32m200 [0m0.282 ms - 229[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - daemons undercover created: id "4531530"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/gnext [32m200 [0m0.326 ms - 196[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob gnext created with name "non-existing-entity"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/droppables [32m200 [0m0.531 ms - 243[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob droppable created with name "quickyabc"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/selectable-mistery [32m200 [0m0.261 ms - 256[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob antenna method created with name "dropss"
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 19 milliseconds with status 201
+[35msut_1             |[0m         ✓ response should not include data.unique_cart_id
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received POST /api/containers request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for POST /api/containers request: have-containers-api
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/test/glob [32m200 [0m0.328 ms - 2[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - undercover created. Id: 5b6306bdb00e0c001e05ef68
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/globs [32m200 [0m0.293 ms - 230[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - daemons undercover created: id "6411672"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/gnext [32m200 [0m0.365 ms - 196[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob gnext created with name "non-existing-entity"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/droppables [32m200 [0m0.309 ms - 243[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob droppable created with name "quickyabc"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/selectable-mistery [32m200 [0m0.332 ms - 256[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob antenna method created with name "dropss"
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 18 milliseconds with status 201
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received GET /api/containers/5b6306bdb00e0c001e05ef68 request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for GET /api/containers/5b6306bdb00e0c001e05ef68 request: have-containers-api
+[36mexternal-globs_1  |[0m [0mGET /daemons-api-url/globs/6411672 [32m200 [0m0.172 ms - 65[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 5 milliseconds with status 200
+[35msut_1             |[0m         ✓ should gnext daemons undercover
+[35msut_1             |[0m       with existing glob nice-animal
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received POST /api/containers request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for POST /api/containers request: have-containers-api
+[32mcontainers-api_1    |[0m error: Catched a user defined error 400 nice-animal duplication error
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 4 milliseconds with status 400
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/test/glob [33m400 [0m0.441 ms - 11[0m
+[35msut_1             |[0m         ✓ should respond 400 Bad Request
+[35msut_1             |[0m 
+[35msut_1             |[0m   POST /events
+[35msut_1             |[0m     with invalid data
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received POST /events request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for POST /events request: have-events-api
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 2 milliseconds with status 200
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - MISSING_NAME event incoming. Headers: {"Y-Header-VZ":"have-events-api","host":"containers-api","accept":"application/json","content-type":"application/json","content-length":"2","connection":"close"} Body {}
+[35msut_1             |[0m       ✓ should respond 200 Ok
+[35msut_1             |[0m     with event "bookstores.bookstore_changed"
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - MISSING_NAME error: child "name" fails because ["name" is required]
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received POST /events request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for POST /events request: have-events-api
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 3 milliseconds with status 200
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - bookstores.bookstore_changed event incoming. Headers: {"Y-Header-VZ":"have-events-api","host":"containers-api","accept":"application/json","content-type":"application/json","content-length":"64","connection":"close"} Body {"name":"bookstores.bookstore_changed","data":{"qqq":"bookstore-qqq"}}
+[35msut_1             |[0m       ✓ should respond 200 Ok
+[35msut_1             |[0m       with custom data properties
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received POST /events request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for POST /events request: have-events-api
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 1 milliseconds with status 200
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - bookstores.bookstore_changed event incoming. Headers: {"Y-Header-VZ":"have-events-api","host":"containers-api","accept":"application/json","content-type":"application/json","content-length":"92","connection":"close"} Body {"name":"bookstores.bookstore_changed","data":{"qqq":"bookstore-qqq","customProp":"custom value"}}
+[35msut_1             |[0m         ✓ should respond 200 Ok
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - MISSING_NAME gnextd with id 5b6306bdb00e0c001e05ef69. Error during event handling
+[35msut_1             |[0m       with no qqq
+[33mbingo_1           |[0m 2018-08-02T13:27:25.524+0000 I INDEX    [conn1] build index on: have-events-api.bookstores properties: { v: 2, key: { qqq: 1 }, name: "qqq_1", ns: "have-events-api.bookstores", background: true }
+[33mbingo_1           |[0m 2018-08-02T13:27:25.524+0000 I INDEX    [conn1] build index done.  scanned 0 total records. 0 secs
+[33mbingo_1           |[0m 2018-08-02T13:27:25.525+0000 I NETWORK  [thread1] connection accepted from 172.25.0.4:60900 #4 (4 connections now open)
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Publishing bookstore changes to containers: 
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - bookstore data: "{"qqq":"bookstore-qqq"}"
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Publishing bookstore changes to containers: 
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - bookstore data: "{"qqq":"bookstore-qqq","customProp":"custom value"}"
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - bookstores.bookstore_changed gnextd with id 5b6306bdb00e0c001e05ef6a. No error gnextd
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - bookstores.bookstore_changed gnextd with id 5b6306bdb00e0c001e05ef6b. No error gnextd
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received POST /events request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for POST /events request: have-events-api
+[33mbingo_1           |[0m 2018-08-02T13:27:25.536+0000 I INDEX    [conn3] build index on: have-events-api.bookstores properties: { v: 2, unique: true, key: { undercover_id: 1, qqq: 1 }, name: "undercover_id_1_qqq_1", ns: "have-events-api.bookstores", background: true }
+[33mbingo_1           |[0m 2018-08-02T13:27:25.536+0000 I INDEX    [conn3] build index done.  scanned 0 total records. 0 secs
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 2 milliseconds with status 200
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - bookstores.bookstore_changed event incoming. Headers: {"Y-Header-VZ":"have-events-api","host":"containers-api","accept":"application/json","content-type":"application/json","content-length":"55","connection":"close"} Body {"name":"bookstores.bookstore_changed","data":{"qqq":null}}
+[35msut_1             |[0m         ✓ should respond 200 Ok
+[35msut_1             |[0m     with event "bookstores.bookstore_deleted"
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - bookstores.bookstore_changed error: child "qqq" fails because ["qqq" must be a string]
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - bookstores.bookstore_changed gnextd with id 5b6306bdb00e0c001e05ef6c. Error during event handling
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received POST /events request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for POST /events request: have-events-api
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 1 milliseconds with status 200
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - bookstores.bookstore_changed event incoming. Headers: {"Y-Header-VZ":"have-events-api","host":"containers-api","accept":"application/json","content-type":"application/json","content-length":"64","connection":"close"} Body {"name":"bookstores.bookstore_changed","data":{"qqq":"bookstore-qqq"}}
+[35msut_1             |[0m       ✓ should respond 200 Ok
+[35msut_1             |[0m       with custom data properties
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Publishing bookstore changes to containers: 
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - bookstore data: "{"qqq":"bookstore-qqq"}"
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received POST /events request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for POST /events request: have-events-api
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 1 milliseconds with status 200
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - bookstores.bookstore_deleted event incoming. Headers: {"Y-Header-VZ":"have-events-api","host":"containers-api","accept":"application/json","content-type":"application/json","content-length":"92","connection":"close"} Body {"name":"bookstores.bookstore_deleted","data":{"qqq":"bookstore-qqq","customProp":"custom value"}}
+[35msut_1             |[0m         ✓ should respond 200 Ok
+[35msut_1             |[0m       with no qqq
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - bookstores.bookstore_changed gnextd with id 5b6306bdb00e0c001e05ef6d. No error gnextd
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Unpublishing bookstore from containers: 
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - bookstores.bookstore_deleted gnextd with id 5b6306bdb00e0c001e05ef6e. No error gnextd
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received POST /events request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for POST /events request: have-events-api
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 1 milliseconds with status 200
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - bookstores.bookstore_deleted event incoming. Headers: {"Y-Header-VZ":"have-events-api","host":"containers-api","accept":"application/json","content-type":"application/json","content-length":"55","connection":"close"} Body {"name":"bookstores.bookstore_deleted","data":{"qqq":null}}
+[35msut_1             |[0m         ✓ should respond 200 Ok
+[35msut_1             |[0m 
+[35msut_1             |[0m   POST /test/containers/daemons
+[35msut_1             |[0m     with existent nice-animal
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - bookstores.bookstore_deleted error: child "qqq" fails because ["qqq" must be a string]
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - bookstores.bookstore_deleted gnextd with id 5b6306bdb00e0c001e05ef6f. Error during event handling
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received POST /api/test/containers/daemons request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for POST /api/test/containers/daemons request: have-test-containers-daemons-api
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/test/glob [33m400 [0m0.362 ms - 11[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 7 milliseconds with status 400
+[35msut_1             |[0m       ✓ should respond 400 Bad Request
+[35msut_1             |[0m     with non existent nice-animal
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received POST /api/test/containers/daemons request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for POST /api/test/containers/daemons request: have-test-containers-daemons-api
+[33mbingo_1           |[0m 2018-08-02T13:27:25.579+0000 I INDEX    [conn2] build index on: have-test-containers-daemons-api.bookstores properties: { v: 2, key: { qqq: 1 }, name: "qqq_1", ns: "have-test-containers-daemons-api.bookstores", background: true }
+[33mbingo_1           |[0m 2018-08-02T13:27:25.580+0000 I INDEX    [conn2] build index done.  scanned 0 total records. 0 secs
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/test/glob [32m200 [0m0.369 ms - 2[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 7 milliseconds with status 200
+[35msut_1             |[0m       ✓ should respond 200 Ok
+[35msut_1             |[0m 
+[35msut_1             |[0m   PUT /containers/:id/blinbling-rates/:id
+[33mbingo_1           |[0m 2018-08-02T13:27:25.589+0000 I INDEX    [conn4] build index on: have-test-containers-daemons-api.bookstores properties: { v: 2, unique: true, key: { undercover_id: 1, qqq: 1 }, name: "undercover_id_1_qqq_1", ns: "have-test-containers-daemons-api.bookstores", background: true }
+[33mbingo_1           |[0m 2018-08-02T13:27:25.589+0000 I INDEX    [conn4] build index done.  scanned 0 total records. 0 secs
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received POST /api/containers request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for POST /api/containers request: put-containers-id-blinbling-rates-id-api
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/test/glob [32m200 [0m0.396 ms - 2[0m
+[33mbingo_1           |[0m 2018-08-02T13:27:25.609+0000 I INDEX    [conn2] build index on: put-containers-id-blinbling-rates-id-api.bookstores properties: { v: 2, key: { qqq: 1 }, name: "qqq_1", ns: "put-containers-id-blinbling-rates-id-api.bookstores", background: true }
+[33mbingo_1           |[0m 2018-08-02T13:27:25.610+0000 I INDEX    [conn2] build index done.  scanned 0 total records. 0 secs
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - undercover created. Id: 5b6306bdb00e0c001e05ef70
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/globs [32m200 [0m0.475 ms - 92[0m
+[33mbingo_1           |[0m 2018-08-02T13:27:25.622+0000 I INDEX    [conn1] build index on: put-containers-id-blinbling-rates-id-api.bookstores properties: { v: 2, unique: true, key: { undercover_id: 1, qqq: 1 }, name: "undercover_id_1_qqq_1", ns: "put-containers-id-blinbling-rates-id-api.bookstores", background: true }
+[33mbingo_1           |[0m 2018-08-02T13:27:25.622+0000 I INDEX    [conn1] build index done.  scanned 0 total records. 0 secs
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - daemons undercover created: id "8447280"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/gnext [32m200 [0m0.343 ms - 222[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob gnext created with name "non-existing-nice-animal"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/droppables [32m200 [0m0.297 ms - 243[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob droppable created with name "quickyabc"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/selectable-mistery [32m200 [0m0.274 ms - 256[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob antenna method created with name "dropss"
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 38 milliseconds with status 201
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received POST /api/containers/5b6306bdb00e0c001e05ef70/blinbling-rates request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for POST /api/containers/5b6306bdb00e0c001e05ef70/blinbling-rates request: put-containers-id-blinbling-rates-id-api
+[36mexternal-globs_1  |[0m [0mGET /daemons-api-url/globs/8447280 [32m200 [0m0.243 ms - 65[0m
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/droppables [32m200 [0m0.437 ms - 225[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 9 milliseconds with status 200
+[35msut_1             |[0m     for a non daemons type undercover
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received POST /api/containers request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for POST /api/containers request: put-containers-id-blinbling-rates-id-api
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/test/glob [32m200 [0m0.433 ms - 2[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - undercover created. Id: 5b6306bdb00e0c001e05ef71
+[36mexternal-globs_1  |[0m [0mPOST /daemons-api-url/globs [32m200 [0m0.440 ms - 92[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - daemons undercover created: id "8257230"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/gnext [32m200 [0m0.421 ms - 222[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob gnext created with name "non-existing-nice-animal"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/droppables [32m200 [0m0.391 ms - 241[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob droppable created with name "quickyabc"
+[36mexternal-globs_1  |[0m [0mPOST /solitary-url/selectable-mistery [32m200 [0m0.581 ms - 256[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - mister blob antenna method created with name "dropss"
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 20 milliseconds with status 201
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received PUT /api/containers/5b6306bdb00e0c001e05ef71/blinbling-rates/68841 request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for PUT /api/containers/5b6306bdb00e0c001e05ef71/blinbling-rates/68841 request: put-containers-id-blinbling-rates-id-api
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 3 milliseconds with status 404
+[35msut_1             |[0m       ✓ should respond 404 Not Found
+[35msut_1             |[0m     for a daemons type undercover
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received PUT /api/containers/5b6306bdb00e0c001e05ef70/blinbling-rates/68841 request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for PUT /api/containers/5b6306bdb00e0c001e05ef70/blinbling-rates/68841 request: put-containers-id-blinbling-rates-id-api
+[36mexternal-globs_1  |[0m [0mGET /daemons-api-url/globs/8447280 [32m200 [0m0.205 ms - 65[0m
+[36mexternal-globs_1  |[0m [0mPUT /solitary-url/droppables/68841 [32m200 [0m0.560 ms - 227[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 9 milliseconds with status 200
+[35msut_1             |[0m       ✓ should respond 200 Ok
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received PUT /api/containers/5b6306bdb00e0c001e05ef70/blinbling-rates/68841 request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for PUT /api/containers/5b6306bdb00e0c001e05ef70/blinbling-rates/68841 request: put-containers-id-blinbling-rates-id-api
+[36mexternal-globs_1  |[0m [0mGET /daemons-api-url/globs/8447280 [32m200 [0m0.306 ms - 65[0m
+[36mexternal-globs_1  |[0m [0mPUT /solitary-url/droppables/68841 [32m200 [0m0.588 ms - 231[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 12 milliseconds with status 200
+[35msut_1             |[0m       ✓ should respond with an updated object
+[35msut_1             |[0m     when mister blob responds with an error
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Received PUT /api/containers/5b6306bdb00e0c001e05ef70/blinbling-rates/error request
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Y-Header-VZ for PUT /api/containers/5b6306bdb00e0c001e05ef70/blinbling-rates/error request: put-containers-id-blinbling-rates-id-api
+[36mexternal-globs_1  |[0m [0mGET /daemons-api-url/globs/8447280 [32m200 [0m0.209 ms - 65[0m
+[36mexternal-globs_1  |[0m [0mPUT /solitary-url/droppables/error [31m500 [0m0.365 ms - 18[0m
+[32mcontainers-api_1    |[0m info: XXX_AB MISSING - Completed in 10 milliseconds with status 500
+[35msut_1             |[0m       ✓ should forward the error
+[35msut_1             |[0m 
+[35msut_1             |[0m 
+[35msut_1             |[0m   104 passing (3s)
+[35msut_1             |[0m 
+[35m153321638437056972f27dd88ab1eb9ebc2d6d9c9ecf998617cb0_sut_1 exited with code 0
+[0mStopping 153321638437056972f27dd88ab1eb9ebc2d6d9c9ecf998617cb0_containers-api_1   ... 
+Stopping 153321638437056972f27dd88ab1eb9ebc2d6d9c9ecf998617cb0_bingo_1          ... 
+Stopping 153321638437056972f27dd88ab1eb9ebc2d6d9c9ecf998617cb0_external-globs_1 ... 
+[3A[2K
+Stopping 153321638437056972f27dd88ab1eb9ebc2d6d9c9ecf998617cb0_containers-api_1   ... [32mdone[0m
+[3B[2A[2K
+Stopping 153321638437056972f27dd88ab1eb9ebc2d6d9c9ecf998617cb0_bingo_1          ... [32mdone[0m
+[2B[1A[2K
+Stopping 153321638437056972f27dd88ab1eb9ebc2d6d9c9ecf998617cb0_external-globs_1 ... [32mdone[0m
+[1BAborting on container exit...
+The push refers to repository [registry.hub.docker.com/testt/containers-api]
+d4a5454aef64: Preparing
+9f9b0aff6f31: Preparing
+65e169ac4207: Preparing
+75cadf66496c: Preparing
+6af01dc725a3: Preparing
+3ed23793c6be: Preparing
+9dfa40a0da3b: Preparing
+3ed23793c6be: Waiting
+9dfa40a0da3b: Waiting
+6af01dc725a3: Layer already exists
+3ed23793c6be: Layer already exists
+9dfa40a0da3b: Layer already exists
+75cadf66496c: Pushed
+65e169ac4207: Pushed
+d4a5454aef64: Pushed
+9f9b0aff6f31: Pushed
+PR-36: digest: sha256:7fe66c68e6fec9e4dc126a44a1dbb474afd138e6ae64d759aab3e5a85b231b40 size: 1789
+Build ended in 95 seconds
