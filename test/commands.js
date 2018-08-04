@@ -5,9 +5,6 @@ const path = require("path");
 const commands = require('../lib/commands');
 
 const file = path.resolve('test/support/big-real-log.txt');
-console.log(file);
-
-const { spawn, exec } = require('child_process');
 
 describe('Commands', function() {
     describe('#convert_log_to_html()', function() {

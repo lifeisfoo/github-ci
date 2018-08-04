@@ -2,3 +2,4 @@ builds/
 logs/
 node_modules/
 .env
+test/support/*.html
