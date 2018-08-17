@@ -1,12 +1,10 @@
 # github-ci
 
-`github-ci` is an opinionated continuous integration app (CI) for Github organizations. 
+`github-ci` is a Docker-based continuous integration and continuous delivery application for Github organizations.
 
 It tries to follow the [KISS principle](https://en.wikipedia.org/wiki/KISS_principle) and the [convention over configuration](https://en.wikipedia.org/wiki/Convention_over_configuration) paradigm.
 
-It's a self hosted application to build, test and publish your projects using Dockerfiles and docker-compose files.
-
-It's main purpose is to publish Docker images to a registry, but it can be used to build and publish anything you want. 
+Read more about it in [this introductory post](https://miliucci.org/p/introducting-github-ci.html).
 
 ## Installation
 
@@ -26,7 +24,7 @@ It's main purpose is to publish Docker images to a registry, but it can be used 
 
 ## TODO
 
-- [ ] Explain scope of the project and its limits
+- [x] Explain scope of the project and its limits
 - [ ] Better installation documentation
 - [ ] Explain conventions
 - [ ] Explain how to use pm2 for logs and restart
