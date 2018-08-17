@@ -25,11 +25,11 @@ Read more about it in [this introductory post](https://miliucci.org/p/introducti
 ## TODO
 
 - [x] Explain scope of the project and its limits
-- [ ] Better installation documentation
+- [x] Add a non-Docker project example (e.g. a npm library)
+- [ ] Better installation and configuration documentation
 - [ ] Explain conventions
 - [ ] Explain how to use pm2 for logs and restart
 - [ ] Add a complete example of a project
-- [ ] Add a non-Docker project example (e.g. a npm library)
 
 ## Internals
 
