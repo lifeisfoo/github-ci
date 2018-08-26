@@ -3,3 +3,5 @@ logs/
 node_modules/
 .env
 test/support/*.html
+redis-data/
+.idea/

@@ -1,0 +1,33 @@
+version: "3"
+
+services:
+  github-ci:
+    build: .
+    ports:
+      - "3000:80"
+    volumes:
+      - ./logs:/logs
+      - ./builds:/builds
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - GITHUB_ACCESS_TOKEN=aaae77a4532fc43fccc3d12ce47a123719876f90
+      - DOCKER_REGISTRY=registry.hub.docker.com
+      - DOCKER_USER=auser
+      - DOCKER_PASS=yourpass
+      - DEFAULT_GITHUB_ORG=user
+      - DEFAULT_DOCKER_REGISTRY_ORG=my-org
+      - ACTIVE_REPOS=test-ci,test-2
+      - BUILD_LOGS_BASE_URL=http://localhost
+      - REDIS_URL=redis://redis:6379
+      - PORT=80
+      - BUILDS_DIR=/builds
+      - LOGS_DIR=/logs
+      - REPOS_SKIP_TEST_AND_SKIP_PUSH=lifeisfoo/npm-package-example
+      - REPOS_IMAGES_MAP=lifeisfoo/example lifeisfoo/example-with-name
+      - DOCKER_BUILD_ARGS=NPM_REGISTRY_SCOPE my-org,NPM_REGISTRY_TOKEN 123,NPM_REGISTRY_URL example.com
+    depends_on:
+      - redis
+  redis:
+    image: redis:4
+    volumes:
+      - ./redis-data:/data

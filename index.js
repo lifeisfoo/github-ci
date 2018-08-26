@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 require('dotenv').config();
 
 const DEFAULT_GITHUB_ORG = process.env.DEFAULT_GITHUB_ORG || '';
+const PORT = process.env.PORT || 80;
 
 const ACTIVE_REPOS = process.env.ACTIVE_REPOS.split(',');
 const SUPPORTED_EVENTS = ['pull_request', 'push', 'status', 'create'];
@@ -78,4 +79,4 @@ app.post('/events-handler',
     }
 });
 
-app.listen(3000, () => console.log('Github CI app listening on port 3000'));
+app.listen(PORT, () => console.log(`Github CI app listening on port ${PORT}`));
